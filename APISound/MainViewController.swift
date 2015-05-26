@@ -8,20 +8,27 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
-
     @IBOutlet weak var methodPickerView: UIPickerView!
+    @IBOutlet weak var urlParams: UITableView!
     
     let METHODS = ["GET","POST", "PUT", "DELETE", "HEAD", "OPTIONS"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        methodPickerView.hidden = true
         methodField.delegate = self
+        
+        methodPickerView.hidden = true
         methodPickerView.delegate = self
         methodPickerView.dataSource = self
+        
+        
+        urlParams.dataSource = self
+        urlParams.delegate = self
+        urlParams.hidden = true
         
         methodField.text = METHODS[0]
     }
@@ -38,6 +45,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
 
     @IBAction func showAbout(sender: UIBarButtonItem) {
         self.slideMenuController()?.openRight()
+    }
+    
+    @IBAction func addUrlParams(sender: UIButton) {
+        urlParams.hidden = !urlParams.hidden
+    }
+    
+    @IBAction func addUrlParam(sender: UIButton) {
     }
     /*
     // MARK: - Navigation
@@ -76,5 +90,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         methodPickerView.hidden = false
         return false
     }
+    
+    //Mark: UITableViewDataSource
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return METHODS.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
+        
+        
+        cell.paramKey.text = METHODS[indexPath.row]
+        return cell
+    }
+    
+    
 
 }
