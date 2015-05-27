@@ -13,9 +13,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
     @IBOutlet weak var methodPickerView: UIPickerView!
-    @IBOutlet weak var urlParams: UITableView!
+    @IBOutlet weak var urlParamsTableView: UITableView!
     
     let METHODS = ["GET","POST", "PUT", "DELETE", "HEAD", "OPTIONS"]
+    
+    var urlParamList = [UrlParam]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +28,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         methodPickerView.dataSource = self
         
         
-        urlParams.dataSource = self
-        urlParams.delegate = self
-        urlParams.hidden = true
+        urlParamsTableView.dataSource = self
+        urlParamsTableView.delegate = self
+        urlParamsTableView.hidden = true
         
         methodField.text = METHODS[0]
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        urlParamList.append(UrlParam(k:"key", v:"value"))
     }
     
 
@@ -48,7 +47,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func addUrlParams(sender: UIButton) {
-        urlParams.hidden = !urlParams.hidden
+        urlParamsTableView.hidden = !urlParamsTableView.hidden
     }
     
     @IBAction func addUrlParam(sender: UIButton) {
@@ -94,17 +93,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     //Mark: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return METHODS.count
+        return urlParamList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
-        
-        
-        cell.paramKey.text = METHODS[indexPath.row]
+        cell.urlParam = urlParamList[indexPath.row]
         return cell
     }
     
-    
-
 }

@@ -13,9 +13,15 @@ class UrlParamCell: UITableViewCell {
     @IBOutlet weak var paramKey: UITextField!
     @IBOutlet weak var paramValue: UITextField!
     
+    var urlParam: UrlParam! {
+        didSet {
+            paramKey.text = urlParam.key
+            paramValue.text = urlParam.value
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

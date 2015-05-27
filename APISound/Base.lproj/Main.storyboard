@@ -149,7 +149,7 @@
                         <outlet property="methodField" destination="6ZX-JN-vmN" id="a6d-dt-SNl"/>
                         <outlet property="methodPickerView" destination="pc8-ey-Fgz" id="zcp-vl-FQO"/>
                         <outlet property="urlField" destination="YLr-hD-F5d" id="eKF-Xy-6TR"/>
-                        <outlet property="urlParams" destination="Aqe-ea-Se5" id="ETP-1E-Bzh"/>
+                        <outlet property="urlParamsTableView" destination="Aqe-ea-Se5" id="cuT-ZC-U4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
