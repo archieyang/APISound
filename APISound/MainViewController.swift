@@ -46,11 +46,20 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.slideMenuController()?.openRight()
     }
     
-    @IBAction func addUrlParams(sender: UIButton) {
+    @IBAction func showUrlParamsTable(sender: UIButton) {
         urlParamsTableView.hidden = !urlParamsTableView.hidden
     }
     
-    @IBAction func addUrlParam(sender: UIButton) {
+    @IBAction func addUrlParamPair(sender: UIButton) {
+        urlParamList.append(UrlParam(k:"", v:""))
+        urlParamsTableView.reloadData()
+    }
+    
+    @IBAction func sendRequest(sender: UIButton) {
+        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) {
+            (string) in
+            println(string)
+        }
     }
     /*
     // MARK: - Navigation

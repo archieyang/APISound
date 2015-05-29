@@ -51,7 +51,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="addUrlParam:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Z3-zZ-6pe"/>
+                                                <action selector="addUrlParamPair:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbj-Au-Yc5"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -107,12 +107,21 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addUrlParams:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwi-H0-D6U"/>
+                                    <action selector="showUrlParamsTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QO8-NV-Nnd"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-ey-Fgz">
                                 <rect key="frame" x="16" y="430" width="568" height="162"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njA-7m-xbd">
+                                <rect key="frame" x="277" y="562" width="36" height="30"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZt-WT-rVx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -209,40 +218,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgU-zF-NcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="642" y="394"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Xyi-6Y-akP">
-            <objects>
-                <viewController id="y6R-3x-4Bh" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="V23-84-F79"/>
-                        <viewControllerLayoutGuide type="bottom" id="dkO-Q4-tiN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KWC-2j-eCf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ij-xo-ugm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="En2-mR-Enz">
-            <objects>
-                <viewController id="z6F-wl-hE1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yhq-9R-JQb"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Mr-Gs-bLO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GJ2-1o-9dL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hqB-Gu-zdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>
