@@ -56,10 +56,25 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func sendRequest(sender: UIButton) {
+        filterOutEmptyUrlParams()
+        urlParamsTableView.reloadData()
+        
         HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) {
             (string) in
             println(string)
         }
+    }
+    
+    private func filterOutEmptyUrlParams() {
+        var urlParamListWithoutEmptyValue = [UrlParam]()
+        
+        for urlParam in urlParamList {
+            if !urlParam.key.isEmpty && !urlParam.value.isEmpty {
+                urlParamListWithoutEmptyValue.append(urlParam)
+            }
+        }
+        
+        urlParamList = urlParamListWithoutEmptyValue
     }
     /*
     // MARK: - Navigation

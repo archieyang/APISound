@@ -15,6 +15,7 @@ class HttpFetcher {
         var params = [String: AnyObject]()
         for urlParam in urlParamList {
             params[urlParam.key] = urlParam.value
+            println(urlParam.key + urlParam.value)
         }
         Alamofire.request(.GET, url, parameters: params).responseString {
             (_, _, string, _) in
