@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UrlParam {
+struct UrlParam {
     init(k: String, v: String){
         key = k
         value = v

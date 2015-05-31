@@ -49,56 +49,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
-        var addParamController = UIAlertController(title: "Add URL parameter", message: "Please input key and value", preferredStyle: UIAlertControllerStyle.Alert)
-        
-
-        
-        
-        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (_) in
-            let keyTextField = addParamController.textFields![0] as! UITextField
-            let valueTextField = addParamController.textFields![1] as! UITextField
-            
-            if keyTextField.text.isEmpty {
-                return;
-            }
-            
-            if valueTextField.text.isEmpty {
-                return;
-            }
-            
-            self.urlParamList.append(UrlParam(k: keyTextField.text, v: valueTextField.text))
+        showUrlParamDialog(nil){ (param) in
+            self.urlParamList.append(param)
             self.urlParamsTableView.reloadData()
         }
-        addAction.enabled = false
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        
-        var isKeyEmpty = true
-        var isValueEmpty = true
-        
-        addParamController.addTextFieldWithConfigurationHandler { (keyTextField) in
-            keyTextField.placeholder = "key"
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: keyTextField, queue: NSOperationQueue.mainQueue()) { (_) in
-                isKeyEmpty = keyTextField.text.isEmpty
-                addAction.enabled = !isKeyEmpty && !isValueEmpty
-            }
-        }
-        
-        addParamController.addTextFieldWithConfigurationHandler { (valueTextField) in
-            valueTextField.placeholder = "value"
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: valueTextField, queue: NSOperationQueue.mainQueue()) { (_) in
-                isValueEmpty = valueTextField.text.isEmpty
-                addAction.enabled = !isKeyEmpty && !isValueEmpty
-            }
-        }
-        
-
-        
-        
-        addParamController.addAction(addAction)
-        addParamController.addAction(cancelAction)
-        
-        self.presentViewController(addParamController, animated: true, completion: nil)
     }
     
     @IBAction func sendRequest(sender: UIButton) {
@@ -172,6 +126,85 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
 
         
+    }
+    
+    //MARK: UITableViewDelegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        showUrlParamDialog(urlParamList[indexPath.row]){ (param) in
+            self.urlParamList[indexPath.row] = param
+            self.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    //MARK: Helper functions
+    
+    private func showUrlParamDialog(defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
+        var addParamController = UIAlertController(title: "Add URL parameter", message: "Please input key and value", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (_) in
+            let keyTextField = addParamController.textFields![0] as! UITextField
+            let valueTextField = addParamController.textFields![1] as! UITextField
+            
+            if keyTextField.text.isEmpty {
+                return;
+            }
+            
+            if valueTextField.text.isEmpty {
+                return;
+            }
+            
+            actionCallback(UrlParam(k: keyTextField.text, v: valueTextField.text))
+        }
+        
+        if let param = defaultUrlParams {
+            addAction.enabled = true
+        } else {
+            addAction.enabled = false
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        var isKeyEmpty = true
+        var isValueEmpty = true
+        
+        addParamController.addTextFieldWithConfigurationHandler { (keyTextField) in
+            if let param = defaultUrlParams {
+                keyTextField.text = param.key
+            } else {
+                keyTextField.placeholder = "key"
+            }
+            
+            isKeyEmpty = keyTextField.text.isEmpty
+            
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: keyTextField, queue: NSOperationQueue.mainQueue()) { (_) in
+                isKeyEmpty = keyTextField.text.isEmpty
+                addAction.enabled = !isKeyEmpty && !isValueEmpty
+            }
+        }
+        
+        addParamController.addTextFieldWithConfigurationHandler { (valueTextField) in
+            if let param = defaultUrlParams {
+                valueTextField.text = param.value
+            } else {
+                valueTextField.placeholder = "value"
+            }
+            
+            isValueEmpty = valueTextField.text.isEmpty
+            
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: valueTextField, queue: NSOperationQueue.mainQueue()) { (_) in
+                isValueEmpty = valueTextField.text.isEmpty
+                addAction.enabled = !isKeyEmpty && !isValueEmpty
+            }
+        }
+        
+        
+        
+        
+        addParamController.addAction(addAction)
+        addParamController.addAction(cancelAction)
+        
+        self.presentViewController(addParamController, animated: true, completion: nil)
     }
     
 }
