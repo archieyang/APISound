@@ -141,14 +141,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         pickerView.hidden = true
     }
     
-    //Mark: UITextViewDelegate
+    //MARK: UITextViewDelegate
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         methodPickerView.hidden = false
         return false
     }
     
-    //Mark: UITableViewDataSource
+    //MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return urlParamList.count
@@ -158,6 +158,20 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
         cell.urlParam = urlParamList[indexPath.row]
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            urlParamList.removeAtIndex(indexPath.row)
+            urlParamsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+
+        
     }
     
 }
