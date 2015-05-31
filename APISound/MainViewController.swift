@@ -33,8 +33,6 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         urlParamsTableView.hidden = true
         
         methodField.text = METHODS[0]
-        
-        urlParamList.append(UrlParam(k:"key", v:"value"))
     }
     
 

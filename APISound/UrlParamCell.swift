@@ -8,23 +8,17 @@
 
 import UIKit
 
-class UrlParamCell: UITableViewCell, UITextFieldDelegate{
+class UrlParamCell: UITableViewCell{
     
-    @IBOutlet weak var paramKey: UITextField!
-    @IBOutlet weak var paramValue: UITextField!
+    @IBOutlet weak var paramKeyLabel: UILabel!
+    @IBOutlet weak var paramValueLabel: UILabel!
+
     
     var urlParam: UrlParam! {
         didSet {
-            paramKey.text = urlParam.key
-            paramValue.text = urlParam.value
-            paramKey.delegate = self
-            paramValue.delegate = self
+            paramKeyLabel.text = urlParam.key
+            paramValueLabel.text = urlParam.value
         }
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        urlParam.key = paramKey.text
-        urlParam.value = paramValue.text
     }
 
 }
