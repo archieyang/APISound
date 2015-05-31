@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
-        showUrlParamDialog(nil){ (param) in
+        showUrlParamDialog("Add", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
             self.urlParamList.append(param)
             self.urlParamsTableView.reloadData()
         }
@@ -131,7 +131,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     //MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showUrlParamDialog(urlParamList[indexPath.row]){ (param) in
+        showUrlParamDialog("Edit", message: "Edit URL parameter", defaultUrlParams: urlParamList[indexPath.row]){ (param) in
             self.urlParamList[indexPath.row] = param
             self.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
@@ -139,12 +139,12 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     //MARK: Helper functions
     
-    private func showUrlParamDialog(defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
-        var addParamController = UIAlertController(title: "Add URL parameter", message: "Please input key and value", preferredStyle: UIAlertControllerStyle.Alert)
+    private func showUrlParamDialog(title: String , message: String, defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
+        var paramOperateController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
-        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (_) in
-            let keyTextField = addParamController.textFields![0] as! UITextField
-            let valueTextField = addParamController.textFields![1] as! UITextField
+        let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default) { (_) in
+            let keyTextField = paramOperateController.textFields![0] as! UITextField
+            let valueTextField = paramOperateController.textFields![1] as! UITextField
             
             if keyTextField.text.isEmpty {
                 return;
@@ -158,9 +158,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         if let param = defaultUrlParams {
-            addAction.enabled = true
+            okAction.enabled = true
         } else {
-            addAction.enabled = false
+            okAction.enabled = false
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -168,7 +168,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         var isKeyEmpty = true
         var isValueEmpty = true
         
-        addParamController.addTextFieldWithConfigurationHandler { (keyTextField) in
+        paramOperateController.addTextFieldWithConfigurationHandler { (keyTextField) in
             if let param = defaultUrlParams {
                 keyTextField.text = param.key
             } else {
@@ -179,11 +179,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: keyTextField, queue: NSOperationQueue.mainQueue()) { (_) in
                 isKeyEmpty = keyTextField.text.isEmpty
-                addAction.enabled = !isKeyEmpty && !isValueEmpty
+                okAction.enabled = !isKeyEmpty && !isValueEmpty
             }
         }
         
-        addParamController.addTextFieldWithConfigurationHandler { (valueTextField) in
+        paramOperateController.addTextFieldWithConfigurationHandler { (valueTextField) in
             if let param = defaultUrlParams {
                 valueTextField.text = param.value
             } else {
@@ -194,17 +194,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: valueTextField, queue: NSOperationQueue.mainQueue()) { (_) in
                 isValueEmpty = valueTextField.text.isEmpty
-                addAction.enabled = !isKeyEmpty && !isValueEmpty
+                okAction.enabled = !isKeyEmpty && !isValueEmpty
             }
         }
         
+        paramOperateController.addAction(okAction)
+        paramOperateController.addAction(cancelAction)
         
-        
-        
-        addParamController.addAction(addAction)
-        addParamController.addAction(cancelAction)
-        
-        self.presentViewController(addParamController, animated: true, completion: nil)
+        self.presentViewController(paramOperateController, animated: true, completion: nil)
     }
     
 }
