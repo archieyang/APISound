@@ -10,3 +10,6 @@ target 'APISoundTests' do
 
 end
 
+target 'APISoundUITests' do
+    pod 'KIF', '~> 3.0'
+end

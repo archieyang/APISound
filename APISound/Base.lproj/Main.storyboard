@@ -99,6 +99,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2G-Y6-SQb">
                                 <rect key="frame" x="16" y="110" width="568" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="URL Params"/>
                                 <state key="normal" title="URL params">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

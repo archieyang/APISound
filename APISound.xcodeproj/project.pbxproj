@@ -10,6 +10,9 @@
 		213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DBBFE1B11E90100773D1F /* SlideMenuController.swift */; };
 		213DBC011B11EA3400773D1F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DBC001B11EA3400773D1F /* MainViewController.swift */; };
 		215F65131B15499D00FFD055 /* UrlParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F65121B15499D00FFD055 /* UrlParam.swift */; };
+		2164C13B1B1BE39900F5D14E /* APISoundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */; };
+		2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */; };
+		2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
 		21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E4C1B17E9E400C6676A /* HttpFetcher.swift */; };
 		21E21DC31B1013AB003D00B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DC21B1013AB003D00B4 /* AppDelegate.swift */; };
@@ -19,9 +22,17 @@
 		21E21DD01B1013AB003D00B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */; };
 		21E21DDC1B1013AB003D00B4 /* APISoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DDB1B1013AB003D00B4 /* APISoundTests.swift */; };
 		3F288351562284F880D9300F /* Pods_APISound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2701FA7371DB85139FB91 /* Pods_APISound.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4CC46EEF83D069BED1B0E1B8 /* Pods_APISoundUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2164C13C1B1BE39900F5D14E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21E21DB51B1013AB003D00B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21E21DBC1B1013AB003D00B4;
+			remoteInfo = APISound;
+		};
 		21E21DD61B1013AB003D00B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21E21DB51B1013AB003D00B4 /* Project object */;
@@ -32,11 +43,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APISoundUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2701FA7371DB85139FB91 /* Pods_APISound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APISound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D62A404A7A113C1F2017FB0 /* Pods-APISound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISound.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISound/Pods-APISound.debug.xcconfig"; sourceTree = "<group>"; };
 		213DBBFE1B11E90100773D1F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		213DBC001B11EA3400773D1F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		215F65121B15499D00FFD055 /* UrlParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParam.swift; sourceTree = "<group>"; };
+		2164C1361B1BE39900F5D14E /* APISoundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APISoundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2164C1391B1BE39900F5D14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISoundUITests.swift; sourceTree = "<group>"; };
+		2164C1411B1BE45F00F5D14E /* APISoundUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APISoundUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
+		2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowUrlParamTableTests.swift; sourceTree = "<group>"; };
 		21663B281B13FB4B002CD59A /* UrlParamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamCell.swift; sourceTree = "<group>"; };
 		21827E4C1B17E9E400C6676A /* HttpFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFetcher.swift; sourceTree = "<group>"; };
 		21E21DBD1B1013AB003D00B4 /* APISound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APISound.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,10 +67,20 @@
 		21E21DD51B1013AB003D00B4 /* APISoundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APISoundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E21DDA1B1013AB003D00B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E21DDB1B1013AB003D00B4 /* APISoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISoundTests.swift; sourceTree = "<group>"; };
+		61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		799F383D170B4900E8191BED /* Pods-APISound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISound.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISound/Pods-APISound.release.xcconfig"; sourceTree = "<group>"; };
+		FE73BC0B01A1912646DF7006 /* Pods-APISoundUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2164C1331B1BE39900F5D14E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CC46EEF83D069BED1B0E1B8 /* Pods_APISoundUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21E21DBA1B1013AB003D00B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +99,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2164C1371B1BE39900F5D14E /* APISoundUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */,
+				2164C1381B1BE39900F5D14E /* Supporting Files */,
+				2164C1411B1BE45F00F5D14E /* APISoundUITests-Bridging-Header.h */,
+				2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */,
+				2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */,
+			);
+			path = APISoundUITests;
+			sourceTree = "<group>";
+		};
+		2164C1381B1BE39900F5D14E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2164C1391B1BE39900F5D14E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		21827E4E1B17EA0900C6676A /* HttpFetcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +134,7 @@
 			children = (
 				21E21DBF1B1013AB003D00B4 /* APISound */,
 				21E21DD81B1013AB003D00B4 /* APISoundTests */,
+				2164C1371B1BE39900F5D14E /* APISoundUITests */,
 				21E21DBE1B1013AB003D00B4 /* Products */,
 				C86FD3BCE933BEB555D51A5E /* Pods */,
 				2640C71B617921DC33094C80 /* Frameworks */,
@@ -97,6 +146,7 @@
 			children = (
 				21E21DBD1B1013AB003D00B4 /* APISound.app */,
 				21E21DD51B1013AB003D00B4 /* APISoundTests.xctest */,
+				2164C1361B1BE39900F5D14E /* APISoundUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				12D2701FA7371DB85139FB91 /* Pods_APISound.framework */,
+				1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +206,8 @@
 			children = (
 				1D62A404A7A113C1F2017FB0 /* Pods-APISound.debug.xcconfig */,
 				799F383D170B4900E8191BED /* Pods-APISound.release.xcconfig */,
+				61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */,
+				FE73BC0B01A1912646DF7006 /* Pods-APISoundUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -162,6 +215,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2164C1351B1BE39900F5D14E /* APISoundUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2164C13E1B1BE39900F5D14E /* Build configuration list for PBXNativeTarget "APISoundUITests" */;
+			buildPhases = (
+				6657AB4A2251A6D1EDC03713 /* Check Pods Manifest.lock */,
+				2164C1321B1BE39900F5D14E /* Sources */,
+				2164C1331B1BE39900F5D14E /* Frameworks */,
+				2164C1341B1BE39900F5D14E /* Resources */,
+				7B5A84B1F517685C997A232D /* Embed Pods Frameworks */,
+				4CB4B065E25F9FCA055C5BE6 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2164C13D1B1BE39900F5D14E /* PBXTargetDependency */,
+			);
+			name = APISoundUITests;
+			productName = APISoundUITests;
+			productReference = 2164C1361B1BE39900F5D14E /* APISoundUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		21E21DBC1B1013AB003D00B4 /* APISound */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21E21DDF1B1013AB003D00B4 /* Build configuration list for PBXNativeTarget "APISound" */;
@@ -209,6 +283,10 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = archie;
 				TargetAttributes = {
+					2164C1351B1BE39900F5D14E = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 21E21DBC1B1013AB003D00B4;
+					};
 					21E21DBC1B1013AB003D00B4 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -233,11 +311,19 @@
 			targets = (
 				21E21DBC1B1013AB003D00B4 /* APISound */,
 				21E21DD41B1013AB003D00B4 /* APISoundTests */,
+				2164C1351B1BE39900F5D14E /* APISoundUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2164C1341B1BE39900F5D14E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21E21DBB1B1013AB003D00B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +374,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISound/Pods-APISound-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4CB4B065E25F9FCA055C5BE6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6657AB4A2251A6D1EDC03713 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		67F7378198997A808D58790C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,9 +419,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISound/Pods-APISound-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7B5A84B1F517685C997A232D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2164C1321B1BE39900F5D14E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */,
+				2164C13B1B1BE39900F5D14E /* APISoundUITests.swift in Sources */,
+				2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21E21DB91B1013AB003D00B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +472,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2164C13D1B1BE39900F5D14E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21E21DBC1B1013AB003D00B4 /* APISound */;
+			targetProxy = 2164C13C1B1BE39900F5D14E /* PBXContainerItemProxy */;
+		};
 		21E21DD71B1013AB003D00B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 21E21DBC1B1013AB003D00B4 /* APISound */;
@@ -358,6 +504,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2164C13F1B1BE39900F5D14E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = APISoundUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "APISoundUITests/APISoundUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APISound.app/APISound";
+			};
+			name = Debug;
+		};
+		2164C1401B1BE39900F5D14E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE73BC0B01A1912646DF7006 /* Pods-APISoundUITests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = APISoundUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "APISoundUITests/APISoundUITests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APISound.app/APISound";
+			};
+			name = Release;
+		};
 		21E21DDD1B1013AB003D00B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -502,6 +689,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2164C13E1B1BE39900F5D14E /* Build configuration list for PBXNativeTarget "APISoundUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2164C13F1B1BE39900F5D14E /* Debug */,
+				2164C1401B1BE39900F5D14E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		21E21DB81B1013AB003D00B4 /* Build configuration list for PBXProject "APISound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
