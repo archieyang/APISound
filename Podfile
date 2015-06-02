@@ -7,7 +7,8 @@ target 'APISound' do
 end
 
 target 'APISoundTests' do
-
+    pod 'Quick'
+    pod 'Nimble'
 end
 
 target 'APISoundUITests' do

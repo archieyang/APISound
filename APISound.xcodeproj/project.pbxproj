@@ -14,15 +14,16 @@
 		2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */; };
 		2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
+		216EED841B1D329900121545 /* UrlParamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EED831B1D329900121545 /* UrlParamTest.swift */; };
 		21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E4C1B17E9E400C6676A /* HttpFetcher.swift */; };
 		21E21DC31B1013AB003D00B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DC21B1013AB003D00B4 /* AppDelegate.swift */; };
 		21E21DC61B1013AB003D00B4 /* APISound.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */; };
 		21E21DCB1B1013AB003D00B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DC91B1013AB003D00B4 /* Main.storyboard */; };
 		21E21DCD1B1013AB003D00B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DCC1B1013AB003D00B4 /* Images.xcassets */; };
 		21E21DD01B1013AB003D00B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */; };
-		21E21DDC1B1013AB003D00B4 /* APISoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DDB1B1013AB003D00B4 /* APISoundTests.swift */; };
 		3F288351562284F880D9300F /* Pods_APISound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2701FA7371DB85139FB91 /* Pods_APISound.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CC46EEF83D069BED1B0E1B8 /* Pods_APISoundUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F3A102241B8BD138EF1884DB /* Pods_APISoundTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAB0CF079C3C1243B14C681 /* Pods_APISoundTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,9 @@
 /* Begin PBXFileReference section */
 		1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APISoundUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2701FA7371DB85139FB91 /* Pods_APISound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APISound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CAB0CF079C3C1243B14C681 /* Pods_APISoundTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APISoundTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D62A404A7A113C1F2017FB0 /* Pods-APISound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISound.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISound/Pods-APISound.debug.xcconfig"; sourceTree = "<group>"; };
+		1EB498B02EE25228EC9AB7A5 /* Pods-APISoundTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundTests/Pods-APISoundTests.debug.xcconfig"; sourceTree = "<group>"; };
 		213DBBFE1B11E90100773D1F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		213DBC001B11EA3400773D1F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		215F65121B15499D00FFD055 /* UrlParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParam.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
 		2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowUrlParamTableTests.swift; sourceTree = "<group>"; };
 		21663B281B13FB4B002CD59A /* UrlParamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamCell.swift; sourceTree = "<group>"; };
+		216EED831B1D329900121545 /* UrlParamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTest.swift; sourceTree = "<group>"; };
 		21827E4C1B17E9E400C6676A /* HttpFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFetcher.swift; sourceTree = "<group>"; };
 		21E21DBD1B1013AB003D00B4 /* APISound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APISound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E21DC11B1013AB003D00B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,9 +70,9 @@
 		21E21DCF1B1013AB003D00B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		21E21DD51B1013AB003D00B4 /* APISoundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APISoundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E21DDA1B1013AB003D00B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21E21DDB1B1013AB003D00B4 /* APISoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISoundTests.swift; sourceTree = "<group>"; };
 		61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		799F383D170B4900E8191BED /* Pods-APISound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISound.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISound/Pods-APISound.release.xcconfig"; sourceTree = "<group>"; };
+		A9B1C4692D0D2C88899F99A5 /* Pods-APISoundTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundTests/Pods-APISoundTests.release.xcconfig"; sourceTree = "<group>"; };
 		FE73BC0B01A1912646DF7006 /* Pods-APISoundUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A102241B8BD138EF1884DB /* Pods_APISoundTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +183,7 @@
 		21E21DD81B1013AB003D00B4 /* APISoundTests */ = {
 			isa = PBXGroup;
 			children = (
-				21E21DDB1B1013AB003D00B4 /* APISoundTests.swift */,
+				216EED831B1D329900121545 /* UrlParamTest.swift */,
 				21E21DD91B1013AB003D00B4 /* Supporting Files */,
 			);
 			path = APISoundTests;
@@ -197,6 +202,7 @@
 			children = (
 				12D2701FA7371DB85139FB91 /* Pods_APISound.framework */,
 				1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */,
+				1CAB0CF079C3C1243B14C681 /* Pods_APISoundTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 				799F383D170B4900E8191BED /* Pods-APISound.release.xcconfig */,
 				61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */,
 				FE73BC0B01A1912646DF7006 /* Pods-APISoundUITests.release.xcconfig */,
+				1EB498B02EE25228EC9AB7A5 /* Pods-APISoundTests.debug.xcconfig */,
+				A9B1C4692D0D2C88899F99A5 /* Pods-APISoundTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -260,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21E21DE21B1013AB003D00B4 /* Build configuration list for PBXNativeTarget "APISoundTests" */;
 			buildPhases = (
+				A16EE745C2CBE5C2BFB58365 /* Check Pods Manifest.lock */,
 				21E21DD11B1013AB003D00B4 /* Sources */,
 				21E21DD21B1013AB003D00B4 /* Frameworks */,
 				21E21DD31B1013AB003D00B4 /* Resources */,
+				876EBEF9A5642FBA69FED2E4 /* Embed Pods Frameworks */,
+				A3F571682DB94CCAC82B49F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,6 +445,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		876EBEF9A5642FBA69FED2E4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISoundTests/Pods-APISoundTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A16EE745C2CBE5C2BFB58365 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A3F571682DB94CCAC82B49F8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APISoundTests/Pods-APISoundTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -465,7 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E21DDC1B1013AB003D00B4 /* APISoundTests.swift in Sources */,
+				216EED841B1D329900121545 /* UrlParamTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +566,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -533,6 +590,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -654,6 +712,7 @@
 		};
 		21E21DE31B1013AB003D00B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EB498B02EE25228EC9AB7A5 /* Pods-APISoundTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -673,6 +732,7 @@
 		};
 		21E21DE41B1013AB003D00B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9B1C4692D0D2C88899F99A5 /* Pods-APISoundTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

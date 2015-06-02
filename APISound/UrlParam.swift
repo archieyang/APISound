@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UrlParam {
-    init(k: String, v: String){
+public struct UrlParam {
+    public init(k: String, v: String){
         key = k
         value = v
     }
-    var key: String
-    var value: String
+    public let key: String
+    public let value: String
 }
