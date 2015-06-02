@@ -12,7 +12,7 @@ import XCTest
 class ShowUrlParamTableTest: XCTestCase {
     func testShowUrlParamTable() {
         tapUrlParamButton()
-//        assertUrlParamTableOnView()
+        assertAddUrlParamButtonOnView()
     }
     
 }
@@ -22,7 +22,7 @@ private extension ShowUrlParamTableTest {
         tester.tapViewWithAccessibilityLabel("URL Params",traits: UIAccessibilityTraitButton)
     }
     
-//    func assertUrlParamTableOnView() {
-//        assert(UIApplication.sharedApplication().accessibilityElementWithLabel("URL Params", accessibilityValue: "URL Params", traits: UIAccessibilityTraitButton) != nil)
-//    }
+    func assertAddUrlParamButtonOnView() {
+        tester.waitForViewWithAccessibilityLabel("add URL Params")
+    }
 }
