@@ -143,6 +143,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         var paramOperateController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default) { (_) in
+            
             let keyTextField = paramOperateController.textFields![0] as! UITextField
             let valueTextField = paramOperateController.textFields![1] as! UITextField
             
@@ -157,6 +158,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             actionCallback(UrlParam(k: keyTextField.text, v: valueTextField.text))
         }
         
+        okAction.accessibilityLabel = "OK"
+        
         if let param = defaultUrlParams {
             okAction.enabled = true
         } else {
@@ -164,11 +167,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        cancelAction.accessibilityLabel = "Add URL Params Cancel"
         
         var isKeyEmpty = true
         var isValueEmpty = true
         
         paramOperateController.addTextFieldWithConfigurationHandler { (keyTextField) in
+            keyTextField.accessibilityLabel = "URL param key"
+            
             if let param = defaultUrlParams {
                 keyTextField.text = param.key
             } else {
@@ -184,6 +190,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         paramOperateController.addTextFieldWithConfigurationHandler { (valueTextField) in
+            valueTextField.accessibilityLabel = "URL param value"
+            
             if let param = defaultUrlParams {
                 valueTextField.text = param.value
             } else {
