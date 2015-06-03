@@ -10,7 +10,6 @@
 		213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DBBFE1B11E90100773D1F /* SlideMenuController.swift */; };
 		213DBC011B11EA3400773D1F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DBC001B11EA3400773D1F /* MainViewController.swift */; };
 		215F65131B15499D00FFD055 /* UrlParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F65121B15499D00FFD055 /* UrlParam.swift */; };
-		2164C13B1B1BE39900F5D14E /* APISoundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */; };
 		2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */; };
 		2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
@@ -54,7 +53,6 @@
 		215F65121B15499D00FFD055 /* UrlParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParam.swift; sourceTree = "<group>"; };
 		2164C1361B1BE39900F5D14E /* APISoundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APISoundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164C1391B1BE39900F5D14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISoundUITests.swift; sourceTree = "<group>"; };
 		2164C1411B1BE45F00F5D14E /* APISoundUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APISoundUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
 		2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowUrlParamTableTests.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 		2164C1371B1BE39900F5D14E /* APISoundUITests */ = {
 			isa = PBXGroup;
 			children = (
-				2164C13A1B1BE39900F5D14E /* APISoundUITests.swift */,
 				2164C1381B1BE39900F5D14E /* Supporting Files */,
 				2164C1411B1BE45F00F5D14E /* APISoundUITests-Bridging-Header.h */,
 				2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */,
@@ -498,7 +495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */,
-				2164C13B1B1BE39900F5D14E /* APISoundUITests.swift in Sources */,
 				2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

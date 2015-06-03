@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
-        showUrlParamDialog("Add", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
+        showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
             self.urlParamList.append(param)
             self.urlParamsTableView.reloadData()
         }
