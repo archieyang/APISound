@@ -11,10 +11,6 @@ import XCTest
 
 class ShowUrlParamTableTest: XCTestCase {
     func testShowUrlParamTable() {
-        tapUrlParamButton()
-        assertAddUrlParamButtonOnView()
-        
-        
         tapAddUrlParamButton()
         assertAddUrlParamsDialogOnView()
         
@@ -30,16 +26,9 @@ class ShowUrlParamTableTest: XCTestCase {
 }
 
 private extension ShowUrlParamTableTest {
-    func tapUrlParamButton() {
-        tester.tapViewWithAccessibilityLabel("URL Params", traits: UIAccessibilityTraitButton)
-    }
-    
-    func assertAddUrlParamButtonOnView() {
-        tester.waitForViewWithAccessibilityLabel("add URL Params")
-    }
     
     func tapAddUrlParamButton() {
-        tester.tapViewWithAccessibilityLabel("add URL Params", traits: UIAccessibilityTraitButton)
+        tester.tapViewWithAccessibilityLabel("Add URL Params", traits: UIAccessibilityTraitButton)
     }
     
     func assertAddUrlParamsDialogOnView() {

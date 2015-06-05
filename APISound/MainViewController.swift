@@ -30,7 +30,6 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
         urlParamsTableView.dataSource = self
         urlParamsTableView.delegate = self
-        urlParamsTableView.hidden = true
         
         methodField.text = METHODS[0]
     }
@@ -44,9 +43,6 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.slideMenuController()?.openRight()
     }
     
-    @IBAction func showUrlParamsTable(sender: UIButton) {
-        urlParamsTableView.hidden = !urlParamsTableView.hidden
-    }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
         showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
