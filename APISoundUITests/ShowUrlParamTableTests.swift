@@ -21,39 +21,71 @@ class ShowUrlParamTableTest: XCTestCase {
         fillKeyAndValueTextField()
         tapDoneButton()
         assertAddUrlParamsDialogOffView()
+        
+        assertUrlParamInTableView()
     }
     
 }
 
 private extension ShowUrlParamTableTest {
     
+    enum ButtonLabel: String {
+        case AddUrlParams = "Add URL Params"
+    }
+    
+    enum AddUrlParamAlert: String {
+        case Title = "Add parameters"
+        case KeyTextField = "URL param key"
+        case ValueTextField = "URL param value"
+        case DoneButton = "Done"
+        case CancelButton = "Cancel"
+    }
+    
+    enum UrlParamTable: String {
+        case CellOne = "URL Param 0"
+        case KeyLabel = "URL Param Key 0"
+        case ValueLabel = "URL Param Value 0"
+    }
+    
+    enum MockUrlParam: String {
+        case Key = "start"
+        case Value = "3"
+    }
+
     func tapAddUrlParamButton() {
-        tester.tapViewWithAccessibilityLabel("Add URL Params", traits: UIAccessibilityTraitButton)
+        tester.tapViewWithAccessibilityLabel(ButtonLabel.AddUrlParams.rawValue, traits: UIAccessibilityTraitButton)
     }
     
     func assertAddUrlParamsDialogOnView() {
-        assert(tester.tryFindingViewWithAccessibilityLabel("Add parameters", error: nil))
+        assert(tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil))
     }
     func assertAddUrlParamsDialogOffView() {
-        assert(!tester.tryFindingViewWithAccessibilityLabel("Add parameters", error: nil))
+        assert(!tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil))
     }
     
     func fillKeyTextField() {
-        tester.clearTextFromViewWithAccessibilityLabel("URL param key")
-        tester.clearTextFromViewWithAccessibilityLabel("URL param value")
-        tester.enterText("start", intoViewWithAccessibilityLabel: "URL param key")
-        tester.clearTextFromViewWithAccessibilityLabel("URL param value")
+        tester.clearTextFromViewWithAccessibilityLabel(AddUrlParamAlert.KeyTextField.rawValue)
+        tester.clearTextFromViewWithAccessibilityLabel(AddUrlParamAlert.ValueTextField.rawValue)
+        tester.enterText(MockUrlParam.Key.rawValue, intoViewWithAccessibilityLabel: AddUrlParamAlert.KeyTextField.rawValue)
+        tester.clearTextFromViewWithAccessibilityLabel(AddUrlParamAlert.ValueTextField.rawValue)
     }
     
     func tapDoneButton() {
-        tester.tapViewWithAccessibilityLabel("Done")
+        tester.tapViewWithAccessibilityLabel(AddUrlParamAlert.DoneButton.rawValue)
     }
     
     func fillKeyAndValueTextField() {
-        tester.clearTextFromViewWithAccessibilityLabel("URL param key")
-        tester.clearTextFromViewWithAccessibilityLabel("URL param value")
-        tester.enterText("start", intoViewWithAccessibilityLabel: "URL param key")
-        tester.enterText("3", intoViewWithAccessibilityLabel: "URL param value")
+        tester.clearTextFromViewWithAccessibilityLabel(AddUrlParamAlert.KeyTextField.rawValue)
+        tester.clearTextFromViewWithAccessibilityLabel(AddUrlParamAlert.ValueTextField.rawValue)
+        tester.enterText(MockUrlParam.Key.rawValue, intoViewWithAccessibilityLabel: AddUrlParamAlert.KeyTextField.rawValue)
+        tester.enterText(MockUrlParam.Value.rawValue, intoViewWithAccessibilityLabel: AddUrlParamAlert.ValueTextField.rawValue)
         
+    }
+    
+    func assertUrlParamInTableView() {
+        tester.waitForViewWithAccessibilityLabel(UrlParamTable.CellOne.rawValue)
+       
+        assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.KeyLabel.rawValue) as! UILabel).text == MockUrlParam.Key.rawValue)
+        assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.ValueLabel.rawValue) as! UILabel).text == MockUrlParam.Value.rawValue)
     }
 }

@@ -107,6 +107,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
         cell.urlParam = urlParamList[indexPath.row]
+        cell.accessibilityLabel = "URL Param \(indexPath.row)"
+        cell.paramKeyLabel.accessibilityLabel = "URL Param Key \(indexPath.row)"
+        cell.paramValueLabel.accessibilityLabel = "URL Param Value \(indexPath.row)"
         return cell
     }
     
