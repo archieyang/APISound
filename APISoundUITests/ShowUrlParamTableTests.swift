@@ -23,6 +23,10 @@ class ShowUrlParamTableTest: XCTestCase {
         assertAddUrlParamsDialogOffView()
         
         assertUrlParamInTableView()
+        
+        
+        tapCellOne()
+        assertEditUrlParamsDialogOnView()
     }
     
 }
@@ -35,6 +39,13 @@ private extension ShowUrlParamTableTest {
     
     enum AddUrlParamAlert: String {
         case Title = "Add parameters"
+        case KeyTextField = "URL param key"
+        case ValueTextField = "URL param value"
+        case DoneButton = "Done"
+        case CancelButton = "Cancel"
+    }
+    enum EditUrlParamAlert: String {
+        case Title = "Edit parameters"
         case KeyTextField = "URL param key"
         case ValueTextField = "URL param value"
         case DoneButton = "Done"
@@ -87,5 +98,13 @@ private extension ShowUrlParamTableTest {
        
         assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.KeyLabel.rawValue) as! UILabel).text == MockUrlParam.Key.rawValue)
         assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.ValueLabel.rawValue) as! UILabel).text == MockUrlParam.Value.rawValue)
+    }
+    
+    func tapCellOne() {
+        tester.tapViewWithAccessibilityLabel(UrlParamTable.CellOne.rawValue)
+    }
+    
+    func assertEditUrlParamsDialogOnView() {
+        assert(tester.tryFindingViewWithAccessibilityLabel(EditUrlParamAlert.Title.rawValue, error: nil))
     }
 }

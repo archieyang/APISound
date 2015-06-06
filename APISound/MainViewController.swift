@@ -130,7 +130,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     //MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showUrlParamDialog("Edit", message: "Edit URL parameter", defaultUrlParams: urlParamList[indexPath.row]){ (param) in
+        showUrlParamDialog("Edit parameters", message: "Edit URL parameter", defaultUrlParams: urlParamList[indexPath.row]){ (param) in
             self.urlParamList[indexPath.row] = param
             self.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
