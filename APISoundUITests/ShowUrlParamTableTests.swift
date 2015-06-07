@@ -68,10 +68,11 @@ private extension ShowUrlParamTableTest {
     }
     
     func assertAddUrlParamsDialogOnView() {
-        assert(tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil))
+        XCTAssertTrue(tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil), "Add Url Param dialog not shown")
     }
     func assertAddUrlParamsDialogOffView() {
-        assert(!tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil))
+        XCTAssertFalse(tester.tryFindingViewWithAccessibilityLabel(AddUrlParamAlert.Title.rawValue, error: nil),
+        "Add Url Param dialog not hidden")
     }
     
     func fillKeyTextField() {
@@ -96,8 +97,8 @@ private extension ShowUrlParamTableTest {
     func assertUrlParamInTableView() {
         tester.waitForViewWithAccessibilityLabel(UrlParamTable.CellOne.rawValue)
        
-        assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.KeyLabel.rawValue) as! UILabel).text == MockUrlParam.Key.rawValue)
-        assert((tester.waitForViewWithAccessibilityLabel(UrlParamTable.ValueLabel.rawValue) as! UILabel).text == MockUrlParam.Value.rawValue)
+        XCTAssertEqual((tester.waitForViewWithAccessibilityLabel(UrlParamTable.KeyLabel.rawValue) as! UILabel).text!, MockUrlParam.Key.rawValue, "Key in TableView Not Shown")
+        XCTAssertEqual((tester.waitForViewWithAccessibilityLabel(UrlParamTable.ValueLabel.rawValue) as! UILabel).text!, MockUrlParam.Value.rawValue, "Value in TableView Not Shown")
     }
     
     func tapCellOne() {
@@ -105,6 +106,6 @@ private extension ShowUrlParamTableTest {
     }
     
     func assertEditUrlParamsDialogOnView() {
-        assert(tester.tryFindingViewWithAccessibilityLabel(EditUrlParamAlert.Title.rawValue, error: nil))
+        XCTAssertTrue(tester.tryFindingViewWithAccessibilityLabel(EditUrlParamAlert.Title.rawValue, error: nil), "Edit dialog not shown")
     }
 }
