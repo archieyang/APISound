@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
@@ -19,17 +19,23 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     var urlParamList = [UrlParam]()
     
+    var urlParamTableViewDelegate: UrlParamTableViewDelegate!
+    var urlParamTableViewDataSource: UrlParamTableViewDataSource!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
+        urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
+        
         methodField.delegate = self
         
         methodPickerView.hidden = true
         methodPickerView.delegate = self
         methodPickerView.dataSource = self
         
-        
-        urlParamsTableView.dataSource = self
-        urlParamsTableView.delegate = self
+        urlParamsTableView.dataSource = urlParamTableViewDataSource
+        urlParamsTableView.delegate = urlParamTableViewDelegate
         
         methodField.text = METHODS[0]
     }
@@ -98,47 +104,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         return false
     }
     
-    //MARK: UITableViewDataSource
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return urlParamList.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
-        cell.urlParam = urlParamList[indexPath.row]
-        cell.accessibilityLabel = "URL Param \(indexPath.row)"
-        cell.paramKeyLabel.accessibilityLabel = "URL Param Key \(indexPath.row)"
-        cell.paramValueLabel.accessibilityLabel = "URL Param Value \(indexPath.row)"
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            urlParamList.removeAtIndex(indexPath.row)
-            urlParamsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        }
-
-        
-    }
-    
-    //MARK: UITableViewDelegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showUrlParamDialog("Edit parameters", message: "Edit URL parameter", defaultUrlParams: urlParamList[indexPath.row]){ (param) in
-            self.urlParamList[indexPath.row] = param
-            self.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-    }
-    
     //MARK: Helper functions
     
-    private func showUrlParamDialog(title: String , message: String, defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
+    func getUrlParam(atIndex index: Int) -> UrlParam? {
+        if index < 0 {
+            return nil
+        }
+        
+        if index >= urlParamList.count {
+            return nil
+        }
+        
+        return urlParamList[index]
+    }
+    
+    func showUrlParamDialog(title: String , message: String, defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
         var paramOperateController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default) { (_) in

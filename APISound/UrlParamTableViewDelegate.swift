@@ -8,20 +8,17 @@
 
 import UIKit
 
-class UrlParamTableViewDelegate:NSObject, UITableViewDelegate {
-    let showUrlParamDialog: (String, String,  UrlParam?, (UrlParam) -> Void) -> Void
-    var urlParamList: [UrlParam]
-    init(inout inputUrlParamList: [UrlParam],selectRowCallback: (String, message: String,  UrlParam?, (UrlParam) -> Void) -> Void) {
-        showUrlParamDialog = selectRowCallback
-        urlParamList = inputUrlParamList
-        println("init")
+class UrlParamTableViewDelegate: NSObject, UITableViewDelegate {
+    unowned let mainViewController: MainViewController
+
+    init(controller: MainViewController) {
+        mainViewController = controller
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("clicked")
-        showUrlParamDialog("Edit parameters", "Edit URL parameter", urlParamList[indexPath.row]){ (param) in
-            self.urlParamList[indexPath.row] = param
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        mainViewController.showUrlParamDialog("Edit parameters", message: "Edit URL parameter", defaultUrlParams: mainViewController.getUrlParam(atIndex: indexPath.row)) { [unowned self] (newUrlParam) in
+            self.mainViewController.urlParamList[indexPath.row] = newUrlParam
+            self.mainViewController.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
 }
