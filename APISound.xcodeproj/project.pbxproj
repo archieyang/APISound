@@ -14,6 +14,9 @@
 		2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */; };
 		2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
+		216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */; };
+		216965D81B27C4DC007AAB11 /* MethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */; };
+		216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */; };
 		216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */; };
 		216EED841B1D329900121545 /* UrlParamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EED831B1D329900121545 /* UrlParamTest.swift */; };
 		21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E4C1B17E9E400C6676A /* HttpFetcher.swift */; };
@@ -60,6 +63,9 @@
 		2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
 		2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowUrlParamTableTests.swift; sourceTree = "<group>"; };
 		21663B281B13FB4B002CD59A /* UrlParamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamCell.swift; sourceTree = "<group>"; };
+		216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDataSource.swift; sourceTree = "<group>"; };
+		216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDelegate.swift; sourceTree = "<group>"; };
+		216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodTextFieldDelegate.swift; sourceTree = "<group>"; };
 		216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTableViewDelegate.swift; sourceTree = "<group>"; };
 		216EED831B1D329900121545 /* UrlParamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTest.swift; sourceTree = "<group>"; };
 		21827E4C1B17E9E400C6676A /* HttpFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFetcher.swift; sourceTree = "<group>"; };
@@ -131,6 +137,9 @@
 				213DBC001B11EA3400773D1F /* MainViewController.swift */,
 				216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */,
 				2163C9ED1B23F1660006EE4B /* UrlParamTableViewDataSource.swift */,
+				216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */,
+				216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */,
+				216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */,
 			);
 			name = MainViewController;
 			sourceTree = "<group>";
@@ -521,7 +530,10 @@
 				21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */,
 				215F65131B15499D00FFD055 /* UrlParam.swift in Sources */,
 				21E21DC61B1013AB003D00B4 /* APISound.xcdatamodeld in Sources */,
+				216965D81B27C4DC007AAB11 /* MethodPickerDelegate.swift in Sources */,
 				2163C9EE1B23F1660006EE4B /* UrlParamTableViewDataSource.swift in Sources */,
+				216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */,
+				216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */,
 				216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */,
 				213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */,
 				21E21DC31B1013AB003D00B4 /* AppDelegate.swift in Sources */,

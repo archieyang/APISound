@@ -8,35 +8,66 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
     @IBOutlet weak var methodPickerView: UIPickerView!
     @IBOutlet weak var urlParamsTableView: UITableView!
     
-    let METHODS = ["GET","POST", "PUT", "DELETE", "HEAD", "OPTIONS"]
+    let METHODS = ["GET", "POST"]
     
     var urlParamList = [UrlParam]()
     
-    var urlParamTableViewDelegate: UrlParamTableViewDelegate!
-    var urlParamTableViewDataSource: UrlParamTableViewDataSource!
+    var urlParamTableViewDelegate: UrlParamTableViewDelegate! {
+        didSet {
+            urlParamsTableView.delegate = urlParamTableViewDelegate
+        }
+    }
+    
+    var urlParamTableViewDataSource: UrlParamTableViewDataSource! {
+        didSet {
+            urlParamsTableView.dataSource = urlParamTableViewDataSource
+        }
+    }
+    
+    
+    var methodPickerDataSource: MethodPickerDataSource! {
+        didSet {
+            methodPickerView.dataSource = methodPickerDataSource
+        }
+    }
+    
+    var methodPickerDelegate: MethodPickerDelegate! {
+        didSet {
+             methodPickerView.delegate = methodPickerDelegate
+        }
+    }
+    
+    var methodTextFieldDelegate: MethodTextFieldDelegate! {
+        didSet {
+            methodField.delegate = methodTextFieldDelegate
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
         urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
+        methodPickerDataSource = MethodPickerDataSource(controller: self)
+        methodPickerDelegate = MethodPickerDelegate(controller: self) { row in
+            self.methodField.text = self.METHODS[row]
+            self.methodPickerView.hidden = true
+        }
         
-        methodField.delegate = self
+        methodTextFieldDelegate = MethodTextFieldDelegate {
+            self.methodPickerView.hidden = false
+            return false
+        }
+        
         
         methodPickerView.hidden = true
-        methodPickerView.delegate = self
-        methodPickerView.dataSource = self
-        
-        urlParamsTableView.dataSource = urlParamTableViewDataSource
-        urlParamsTableView.delegate = urlParamTableViewDelegate
-        
         methodField.text = METHODS[0]
     }
     
@@ -64,44 +95,6 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             (string) in
             println(string)
         }
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // MARK: - UIPickerViewDataSource
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return METHODS.count
-    }
-    
-    // MARK: - UIPickerViewDelegate
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return METHODS[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        methodField.text = METHODS[row]
-        pickerView.hidden = true
-    }
-    
-    //MARK: UITextViewDelegate
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        methodPickerView.hidden = false
-        return false
     }
     
     //MARK: Helper functions
