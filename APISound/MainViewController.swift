@@ -88,14 +88,14 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func sendRequest(sender: UIButton) {
-        urlParamsTableView.reloadData()
-        
-        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) {
-            (string) in
-            println(string)
-        }
-    }
+//    @IBAction func sendRequest(sender: UIButton) {
+//        urlParamsTableView.reloadData()
+//        
+//        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) {
+//            (string) in
+//            println(string)
+//        }
+//    }
     
     //MARK: Helper functions
     
@@ -183,5 +183,21 @@ class MainViewController: UIViewController {
         
         self.presentViewController(paramOperateController, animated: true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showResponse" {
+            if let responseViewController = segue.destinationViewController as? ResponseViewController {
+                responseViewController.fetch = req
+            }
+        }
+    }
+    
+    func req(callback: (String?) -> Void) ->Void {
+        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) { (string) in
+            println(string)
+            callback(string)
+        }
+    }
+
     
 }
