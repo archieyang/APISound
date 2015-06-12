@@ -181,8 +181,8 @@
 		21E21DBF1B1013AB003D00B4 /* APISound */ = {
 			isa = PBXGroup;
 			children = (
-				216B005B1B228015005C974F /* MainViewController */,
 				21E21DC91B1013AB003D00B4 /* Main.storyboard */,
+				216B005B1B228015005C974F /* MainViewController */,
 				21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */,
 				21827E4E1B17EA0900C6676A /* HttpFetcher */,
 				21E21DC21B1013AB003D00B4 /* AppDelegate.swift */,

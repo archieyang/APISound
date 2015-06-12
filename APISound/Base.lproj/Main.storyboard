@@ -124,7 +124,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Jxo-2b-u29" kind="showDetail" identifier="showResponse" id="mpK-4q-cYQ"/>
+                                    <segue destination="8vU-R6-1F2" kind="showDetail" identifier="showResponse" id="mpK-4q-cYQ"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-ey-Fgz">
@@ -202,8 +202,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
-                                <rect key="frame" x="16" y="28" width="568" height="564"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BE4-iR-dYJ">
+                                <rect key="frame" x="250" y="72" width="101" height="29"/>
+                                <segments>
+                                    <segment title="Pretty"/>
+                                    <segment title="Raw"/>
+                                </segments>
+                                <connections>
+                                    <action selector="formatChanged:" destination="Jxo-2b-u29" eventType="valueChanged" id="TZi-rT-kZs"/>
+                                </connections>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -212,19 +222,29 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" id="BLx-QE-tGf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" id="Gcn-Li-KRS"/>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="O1T-hr-qnG"/>
-                            <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" constant="8" symbolic="YES" id="wWl-wz-Vg4"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="BE4-iR-dYJ" secondAttribute="bottom" constant="8" symbolic="YES" id="5Wy-i0-ugd"/>
+                            <constraint firstItem="BE4-iR-dYJ" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="87V-UJ-OqQ"/>
+                            <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" id="I9y-Rn-knU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" constant="-16" id="Vxh-tH-lc4"/>
+                            <constraint firstAttribute="centerX" secondItem="BE4-iR-dYJ" secondAttribute="centerX" id="Zrd-Ux-NX4"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="bFJ-cS-lue"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Boa-NY-MDL">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Ifp-Zi-wzy">
+                            <connections>
+                                <action selector="back:" destination="Jxo-2b-u29" id="dpJ-Lv-10n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="responseTextView" destination="J00-84-G4C" id="aPw-un-qsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qq-yh-BDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="1233"/>
+            <point key="canvasLocation" x="2241" y="1233"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qMU-lE-NL1">
@@ -242,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBc-um-Z3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101" y="1148"/>
+            <point key="canvasLocation" x="2913" y="1148"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUv-27-xhL">
@@ -261,6 +281,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgU-zF-NcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="642" y="394"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D9w-E4-tA5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8vU-R6-1F2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Taf-c0-t73">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jxo-2b-u29" kind="relationship" relationship="rootViewController" id="Yno-5H-IKe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erl-H2-Oy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1429" y="1233"/>
         </scene>
     </scenes>
 </document>

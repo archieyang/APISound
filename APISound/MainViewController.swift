@@ -186,15 +186,14 @@ class MainViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {
-            if let responseViewController = segue.destinationViewController as? ResponseViewController {
-                responseViewController.fetch = req
+            if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
+                responseViewController.fetch = request
             }
         }
     }
     
-    func req(callback: (String?) -> Void) ->Void {
+    func request(callback: (String?) -> Void) ->Void {
         HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) { (string) in
-            println(string)
             callback(string)
         }
     }
