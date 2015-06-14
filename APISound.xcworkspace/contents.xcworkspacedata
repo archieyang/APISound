@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:RequestDataItem.swift">
+   </FileRef>
+   <FileRef
       location = "group:APISound.xcodeproj">
    </FileRef>
    <FileRef

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController {
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
@@ -193,6 +195,11 @@ class MainViewController: UIViewController {
     }
     
     func request(callback: (String?) -> Void) ->Void {
+        let newRequestDataItem = NSEntityDescription.insertNewObjectForEntityForName("RequestDataItem", inManagedObjectContext: self.managedObjectContext!) as! RequestDataItem
+        
+        newRequestDataItem.url = urlField.text;
+        newRequestDataItem.method = methodField.text
+        
         HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) { (string) in
             callback(string)
         }
