@@ -14,6 +14,7 @@ class HistoryViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        urlLabel.adjustsFontSizeToFitWidth = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
