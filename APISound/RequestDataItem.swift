@@ -2,7 +2,7 @@
 //  RequestDataItem.swift
 //  
 //
-//  Created by archie on 15/6/14.
+//  Created by archie on 15/6/16.
 //
 //
 
@@ -11,7 +11,8 @@ import CoreData
 
 class RequestDataItem: NSManagedObject {
 
-    @NSManaged var url: String
     @NSManaged var method: String
+    @NSManaged var url: String
+    @NSManaged var params: NSSet
 
 }

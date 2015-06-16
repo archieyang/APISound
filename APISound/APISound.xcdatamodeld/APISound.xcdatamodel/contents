@@ -3,8 +3,15 @@
     <entity name="RequestDataItem" representedClassName="APISound.RequestDataItem" syncable="YES">
         <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="params" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UrlParamItem" inverseName="request" inverseEntity="UrlParamItem" syncable="YES"/>
+    </entity>
+    <entity name="UrlParamItem" representedClassName="APISound.UrlParamItem" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RequestDataItem" inverseName="params" inverseEntity="RequestDataItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RequestDataItem" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="RequestDataItem" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="UrlParamItem" positionX="-63" positionY="0" width="128" height="90"/>
     </elements>
 </model>

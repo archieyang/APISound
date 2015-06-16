@@ -20,7 +20,6 @@
 		216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */; };
 		216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */; };
 		216EED841B1D329900121545 /* UrlParamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EED831B1D329900121545 /* UrlParamTest.swift */; };
-		217CEEF81B2D0FB6001EAFF7 /* RequestDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEF71B2D0FB6001EAFF7 /* RequestDataItem.swift */; };
 		217CEEFA1B2D12F8001EAFF7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */; };
 		217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */; };
 		21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E4C1B17E9E400C6676A /* HttpFetcher.swift */; };
@@ -29,6 +28,8 @@
 		21E21DCB1B1013AB003D00B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DC91B1013AB003D00B4 /* Main.storyboard */; };
 		21E21DCD1B1013AB003D00B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DCC1B1013AB003D00B4 /* Images.xcassets */; };
 		21E21DD01B1013AB003D00B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */; };
+		21EA529E1B2FAC230031D20C /* RequestDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA529D1B2FAC230031D20C /* RequestDataItem.swift */; };
+		21EA52A01B2FACE60031D20C /* UrlParamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA529F1B2FACE60031D20C /* UrlParamItem.swift */; };
 		3F288351562284F880D9300F /* Pods_APISound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2701FA7371DB85139FB91 /* Pods_APISound.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CC46EEF83D069BED1B0E1B8 /* Pods_APISoundUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1295142186EC1647A11F3B19 /* Pods_APISoundUITests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F3A102241B8BD138EF1884DB /* Pods_APISoundTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAB0CF079C3C1243B14C681 /* Pods_APISoundTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -73,7 +74,6 @@
 		216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodTextFieldDelegate.swift; sourceTree = "<group>"; };
 		216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTableViewDelegate.swift; sourceTree = "<group>"; };
 		216EED831B1D329900121545 /* UrlParamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTest.swift; sourceTree = "<group>"; };
-		217CEEF71B2D0FB6001EAFF7 /* RequestDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDataItem.swift; sourceTree = "<group>"; };
 		217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewCell.swift; sourceTree = "<group>"; };
 		21827E4C1B17E9E400C6676A /* HttpFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFetcher.swift; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 		21E21DCF1B1013AB003D00B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		21E21DD51B1013AB003D00B4 /* APISoundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APISoundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E21DDA1B1013AB003D00B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21EA529D1B2FAC230031D20C /* RequestDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDataItem.swift; sourceTree = "<group>"; };
+		21EA529F1B2FACE60031D20C /* UrlParamItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamItem.swift; sourceTree = "<group>"; };
 		61361B3264C35E5D327F2B5E /* Pods-APISoundUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundUITests/Pods-APISoundUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		799F383D170B4900E8191BED /* Pods-APISound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISound.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISound/Pods-APISound.release.xcconfig"; sourceTree = "<group>"; };
 		A9B1C4692D0D2C88899F99A5 /* Pods-APISoundTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APISoundTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APISoundTests/Pods-APISoundTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,14 +189,15 @@
 		21E21DBF1B1013AB003D00B4 /* APISound */ = {
 			isa = PBXGroup;
 			children = (
-				217CEEF71B2D0FB6001EAFF7 /* RequestDataItem.swift */,
+				21EA529F1B2FACE60031D20C /* UrlParamItem.swift */,
+				21EA529D1B2FAC230031D20C /* RequestDataItem.swift */,
 				21E21DC91B1013AB003D00B4 /* Main.storyboard */,
+				21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */,
 				216B005B1B228015005C974F /* MainViewController */,
 				21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */,
 				21827E4E1B17EA0900C6676A /* HttpFetcher */,
 				21E21DC21B1013AB003D00B4 /* AppDelegate.swift */,
 				21663B281B13FB4B002CD59A /* UrlParamCell.swift */,
-				21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */,
 				21E21DCC1B1013AB003D00B4 /* Images.xcassets */,
 				21E21DC01B1013AB003D00B4 /* Supporting Files */,
 				2163DD591B2915870017AEEE /* ResponseViewController.swift */,
@@ -540,10 +543,11 @@
 			files = (
 				21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */,
 				21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */,
+				21EA529E1B2FAC230031D20C /* RequestDataItem.swift in Sources */,
 				215F65131B15499D00FFD055 /* UrlParam.swift in Sources */,
 				217CEEFA1B2D12F8001EAFF7 /* HistoryViewController.swift in Sources */,
 				21E21DC61B1013AB003D00B4 /* APISound.xcdatamodeld in Sources */,
-				217CEEF81B2D0FB6001EAFF7 /* RequestDataItem.swift in Sources */,
+				21EA52A01B2FACE60031D20C /* UrlParamItem.swift in Sources */,
 				216965D81B27C4DC007AAB11 /* MethodPickerDelegate.swift in Sources */,
 				2163C9EE1B23F1660006EE4B /* UrlParamTableViewDataSource.swift in Sources */,
 				216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */,

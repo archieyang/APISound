@@ -26,6 +26,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
             requestList = requests
             self.historyTableView.reloadData()
         }
+        
+        for request in requestList {
+            for param in request.params.allObjects as! [UrlParamItem] {
+                println(param.key + " -> " + param.value)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

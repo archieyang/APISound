@@ -200,6 +200,16 @@ class MainViewController: UIViewController {
         newRequestDataItem.url = urlField.text;
         newRequestDataItem.method = methodField.text
         
+        var paramSet = [AnyObject]()
+        for item in urlParamList {
+            let newUrlParam = NSEntityDescription.insertNewObjectForEntityForName("UrlParamItem", inManagedObjectContext: self.managedObjectContext!) as! UrlParamItem
+            newUrlParam.key = item.key
+            newUrlParam.value = item.value
+            paramSet.append(newUrlParam)
+        }
+        
+        newRequestDataItem.params = NSSet(array: paramSet)
+        
         HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) { (string) in
             callback(string)
         }
