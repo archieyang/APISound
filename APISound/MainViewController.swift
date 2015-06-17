@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import CoreData
 
 class MainViewController: UIViewController {
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
@@ -189,29 +187,8 @@ class MainViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
-                responseViewController.fetch = request
+                responseViewController.request = APIRequest(method: methodField.text, url: urlField.text, urlParamList: urlParamList)
             }
-        }
-    }
-    
-    func request(callback: (String?) -> Void) ->Void {
-        let newRequestDataItem = NSEntityDescription.insertNewObjectForEntityForName("RequestDataItem", inManagedObjectContext: self.managedObjectContext!) as! RequestDataItem
-        
-        newRequestDataItem.url = urlField.text;
-        newRequestDataItem.method = methodField.text
-        
-        var paramSet = [AnyObject]()
-        for item in urlParamList {
-            let newUrlParam = NSEntityDescription.insertNewObjectForEntityForName("UrlParamItem", inManagedObjectContext: self.managedObjectContext!) as! UrlParamItem
-            newUrlParam.key = item.key
-            newUrlParam.value = item.value
-            paramSet.append(newUrlParam)
-        }
-        
-        newRequestDataItem.params = NSSet(array: paramSet)
-        
-        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) { (string) in
-            callback(string)
         }
     }
 

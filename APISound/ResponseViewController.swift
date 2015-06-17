@@ -9,9 +9,15 @@
 import UIKit
 
 class ResponseViewController: UIViewController {
-    @IBOutlet weak var responseTextView: UITextView!
+    var rawResponseString: String? {
+        didSet {
+            responseTextView.text = rawResponseString
+        }
+    }
+    var request: APIRequest!
     
-    var rawResponseString: String?
+    
+    @IBOutlet weak var responseTextView: UITextView!
     
     @IBAction func back(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -28,18 +34,14 @@ class ResponseViewController: UIViewController {
         }
     }
     
-    
-    var fetch: (((String?) -> Void) -> Void)?
 
     override func viewDidLoad() {
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
     }
+    
     override func viewWillAppear(animated: Bool) {
-        fetch! { res in
-            if let showRes = res {
-                self.rawResponseString = showRes
-                self.responseTextView.text = self.rawResponseString
-            }
+        HttpFetcher().execute(request) { res in
+            self.rawResponseString = res
         }
     }
     

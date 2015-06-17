@@ -3,7 +3,7 @@
     <entity name="RequestDataItem" representedClassName="APISound.RequestDataItem" syncable="YES">
         <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="params" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UrlParamItem" inverseName="request" inverseEntity="UrlParamItem" syncable="YES"/>
+        <relationship name="params" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="UrlParamItem" inverseName="request" inverseEntity="UrlParamItem" syncable="YES"/>
     </entity>
     <entity name="UrlParamItem" representedClassName="APISound.UrlParamItem" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>

@@ -12,7 +12,7 @@ import CoreData
 class HistoryViewController: UIViewController, UITableViewDataSource {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var requestList = [RequestDataItem]()
+    var requestList = [APIRequest]()
 
     @IBOutlet weak var historyTableView: UITableView!
     
@@ -21,17 +21,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewWillAppear(animated: Bool) {
-        let fetchRequest = NSFetchRequest(entityName: "RequestDataItem")
-        if let requests = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [RequestDataItem] {
-            requestList = requests
-            self.historyTableView.reloadData()
-        }
         
-        for request in requestList {
-            for param in request.params.allObjects as! [UrlParamItem] {
-                println(param.key + " -> " + param.value)
+        APIRequest.fetchAll { apiRequests in
+            self.requestList = apiRequests
+            self.historyTableView.reloadData()
+            
+            for request in self.requestList {
+                for param in request.urlParamList{
+                    println(param.key + " -> " + param.value)
+                }
             }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

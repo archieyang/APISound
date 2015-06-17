@@ -2,7 +2,7 @@
 //  RequestDataItem.swift
 //  
 //
-//  Created by archie on 15/6/16.
+//  Created by archie on 15/6/17.
 //
 //
 
@@ -13,6 +13,6 @@ class RequestDataItem: NSManagedObject {
 
     @NSManaged var method: String
     @NSManaged var url: String
-    @NSManaged var params: NSSet
+    @NSManaged var params: NSOrderedSet
 
 }

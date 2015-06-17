@@ -23,4 +23,18 @@ class HttpFetcher {
         }
     }
     
+    func execute(request: APIRequest, callback: (String?) -> Void) {
+        var params = [String: AnyObject]()
+        
+        for urlParam in request.urlParamList {
+            params[urlParam.key] = urlParam.value
+            println(urlParam.key + urlParam.value)
+        }
+        
+        Alamofire.request(.GET, request.url, parameters: params).responseString {
+            (_, _, string, _) in
+            callback(string)
+        }
+    }
+    
 }
