@@ -18,7 +18,15 @@ class MainViewController: UIViewController {
     let METHODS = ["GET", "POST"]
     
     
-    var apiRequest: APIRequest?
+    var apiRequest: APIRequest? {
+        didSet {
+            if let request = apiRequest {
+                urlField.text = request.url
+                methodField.text = request.method
+                self.urlParamsTableView.reloadData()
+            }
+        }
+    }
     
     var urlParamTableViewDelegate: UrlParamTableViewDelegate! {
         didSet {
@@ -82,11 +90,10 @@ class MainViewController: UIViewController {
     @IBAction func showHistory(sender: UIBarButtonItem) {
         self.slideMenuController()?.openLeft()
     }
-
-    @IBAction func showAbout(sender: UIBarButtonItem) {
-        self.slideMenuController()?.openRight()
-    }
     
+    @IBAction func createNewRequest(sender: UIBarButtonItem) {
+        self.apiRequest = APIRequest(method: METHODS[0], url: "")
+    }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
         showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
