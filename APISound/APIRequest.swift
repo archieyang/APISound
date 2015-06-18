@@ -23,6 +23,12 @@ public class APIRequest {
         self.urlParamList = urlParamList
     }
     
+    public init(method: String, url: String) {
+        self.url = url
+        self.method = method
+        self.urlParamList = [UrlParam]()
+    }
+    
     private init(requestDataItem: RequestDataItem) {
         self.requestDataItem = requestDataItem
         
@@ -58,8 +64,9 @@ public class APIRequest {
                 newUrlParam.value = item.value
                 paramSet.append(newUrlParam)
             }
-            
+                
             item.params = NSOrderedSet(array: paramSet)
+            
         }
 
     }

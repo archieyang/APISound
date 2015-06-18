@@ -15,12 +15,12 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
         mainViewController = controller
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainViewController.urlParamList.count
+        return mainViewController.apiRequest!.urlParamList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
-        cell.urlParam = mainViewController.urlParamList[indexPath.row]
+        cell.urlParam = mainViewController.apiRequest!.urlParamList[indexPath.row]
         cell.accessibilityLabel = "URL Param \(indexPath.row)"
         cell.paramKeyLabel.accessibilityLabel = "URL Param Key \(indexPath.row)"
         cell.paramValueLabel.accessibilityLabel = "URL Param Value \(indexPath.row)"
@@ -34,7 +34,7 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            mainViewController.urlParamList.removeAtIndex(indexPath.row)
+            mainViewController.apiRequest!.urlParamList.removeAtIndex(indexPath.row)
             mainViewController.urlParamsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
 

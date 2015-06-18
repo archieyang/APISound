@@ -42,6 +42,7 @@ class ResponseViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         HttpFetcher().execute(request) { res in
             self.rawResponseString = res
+            println(res)
         }
     }
     

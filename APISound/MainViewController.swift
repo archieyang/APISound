@@ -17,7 +17,8 @@ class MainViewController: UIViewController {
     
     let METHODS = ["GET", "POST"]
     
-    var urlParamList = [UrlParam]()
+    
+    var apiRequest: APIRequest?
     
     var urlParamTableViewDelegate: UrlParamTableViewDelegate! {
         didSet {
@@ -53,6 +54,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let request = apiRequest {
+            
+        } else {
+            apiRequest = APIRequest(method: METHODS[0], url: "")
+        }
+        
         urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
         urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
         methodPickerDataSource = MethodPickerDataSource(controller: self)
@@ -83,19 +90,10 @@ class MainViewController: UIViewController {
     
     @IBAction func addUrlParamPair(sender: UIButton) {
         showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
-            self.urlParamList.append(param)
+            self.apiRequest!.urlParamList.append(param)
             self.urlParamsTableView.reloadData()
         }
     }
-    
-//    @IBAction func sendRequest(sender: UIButton) {
-//        urlParamsTableView.reloadData()
-//        
-//        HttpFetcher().fetch(urlField.text, urlParamList: urlParamList) {
-//            (string) in
-//            println(string)
-//        }
-//    }
     
     //MARK: Helper functions
     
@@ -104,11 +102,11 @@ class MainViewController: UIViewController {
             return nil
         }
         
-        if index >= urlParamList.count {
+        if index >= apiRequest!.urlParamList.count {
             return nil
         }
         
-        return urlParamList[index]
+        return apiRequest!.urlParamList[index]
     }
     
     func showUrlParamDialog(title: String , message: String, defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
@@ -187,8 +185,10 @@ class MainViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
-                responseViewController.request = APIRequest(method: methodField.text, url: urlField.text, urlParamList: urlParamList)
-                responseViewController.request.save()
+                apiRequest!.url = urlField.text
+                apiRequest!.method = methodField.text
+                apiRequest!.save()
+                responseViewController.request = apiRequest!
             }
         }
     }
