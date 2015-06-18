@@ -11,44 +11,57 @@ import UIKit
 import CoreData
 
 public class APIRequest {
-    private let requestDataItem: RequestDataItem
+    private var requestDataItem: RequestDataItem?
     
-    var url: String {
-        return requestDataItem.url
-    }
-    
-    var method: String {
-        return requestDataItem.method
-    }
-    
-    var urlParamList: [UrlParam] {
-        var list = [UrlParam]()
-        for param in requestDataItem.params.array as! [UrlParamItem] {
-            list.append(UrlParam(k: param.key, v: param.value))
-        }
-        return list
-    }
+    var url: String
+    var method: String
+    var urlParamList: [UrlParam]
     
     public init(method: String, url: String, urlParamList: [UrlParam]) {
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-        requestDataItem = NSEntityDescription.insertNewObjectForEntityForName("RequestDataItem", inManagedObjectContext: managedObjectContext!) as! RequestDataItem
-        requestDataItem.method = method
-        requestDataItem.url = url
-        
-        var paramSet = [AnyObject]()
-        for item in urlParamList {
-            let newUrlParam = NSEntityDescription.insertNewObjectForEntityForName("UrlParamItem", inManagedObjectContext: managedObjectContext!) as! UrlParamItem
-            newUrlParam.key = item.key
-            newUrlParam.value = item.value
-            paramSet.append(newUrlParam)
-        }
-        
-        requestDataItem.params = NSOrderedSet(array: paramSet)
+        self.url = url
+        self.method = method
+        self.urlParamList = urlParamList
     }
     
     private init(requestDataItem: RequestDataItem) {
         self.requestDataItem = requestDataItem
+        
+        url = requestDataItem.url
+        method = requestDataItem.method
+        urlParamList = [UrlParam]()
+        
+        for param in requestDataItem.params.array as! [UrlParamItem] {
+            urlParamList.append(UrlParam(k: param.key, v: param.value))
+        }
+    }
+    
+    public func save() -> Void {
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        
+        //In Swift 2.0 can change to guard sentence
+        if let item = requestDataItem {
+            
+        } else {
+            requestDataItem = NSEntityDescription.insertNewObjectForEntityForName("RequestDataItem", inManagedObjectContext: managedObjectContext!) as? RequestDataItem
+        }
+
+        
+        if let item = requestDataItem {
+            item.method = method
+            item.url = url
+            
+            var paramSet = [AnyObject]()
+            for item in urlParamList {
+                let newUrlParam = NSEntityDescription.insertNewObjectForEntityForName("UrlParamItem", inManagedObjectContext: managedObjectContext!) as! UrlParamItem
+                newUrlParam.key = item.key
+                newUrlParam.value = item.value
+                paramSet.append(newUrlParam)
+            }
+            
+            item.params = NSOrderedSet(array: paramSet)
+        }
+
     }
     
     public class func fetchAll(callback: ([APIRequest]) -> Void) -> Void {

@@ -188,6 +188,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "showResponse" {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
                 responseViewController.request = APIRequest(method: methodField.text, url: urlField.text, urlParamList: urlParamList)
+                responseViewController.request.save()
             }
         }
     }
