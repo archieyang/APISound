@@ -159,6 +159,16 @@
 			name = MainViewController;
 			sourceTree = "<group>";
 		};
+		21706E521B3398F40079880A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21706E501B3396F30079880A /* APIRequestManager.swift */,
+				21EA529F1B2FACE60031D20C /* UrlParamItem.swift */,
+				21EA529D1B2FAC230031D20C /* RequestDataItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		21827E4E1B17EA0900C6676A /* HttpFetcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,21 +204,19 @@
 		21E21DBF1B1013AB003D00B4 /* APISound */ = {
 			isa = PBXGroup;
 			children = (
-				21EA529F1B2FACE60031D20C /* UrlParamItem.swift */,
-				21EA529D1B2FAC230031D20C /* RequestDataItem.swift */,
 				21E21DC91B1013AB003D00B4 /* Main.storyboard */,
+				21E21DC21B1013AB003D00B4 /* AppDelegate.swift */,
 				21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */,
+				21706E521B3398F40079880A /* Model */,
 				216B005B1B228015005C974F /* MainViewController */,
 				21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */,
 				21827E4E1B17EA0900C6676A /* HttpFetcher */,
-				21E21DC21B1013AB003D00B4 /* AppDelegate.swift */,
 				21663B281B13FB4B002CD59A /* UrlParamCell.swift */,
 				21E21DCC1B1013AB003D00B4 /* Images.xcassets */,
 				21E21DC01B1013AB003D00B4 /* Supporting Files */,
 				2163DD591B2915870017AEEE /* ResponseViewController.swift */,
 				217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */,
 				217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */,
-				21706E501B3396F30079880A /* APIRequestManager.swift */,
 			);
 			path = APISound;
 			sourceTree = "<group>";
