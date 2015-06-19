@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="RequestDataItem" representedClassName="APISound.RequestDataItem" syncable="YES">
+        <attribute name="lastRequestTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="params" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="UrlParamItem" inverseName="request" inverseEntity="UrlParamItem" syncable="YES"/>
@@ -11,7 +12,7 @@
         <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RequestDataItem" inverseName="params" inverseEntity="RequestDataItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RequestDataItem" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="RequestDataItem" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="UrlParamItem" positionX="-63" positionY="0" width="128" height="90"/>
     </elements>
 </model>

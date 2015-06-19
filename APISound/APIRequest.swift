@@ -16,6 +16,7 @@ public class APIRequest {
     var url: String
     var method: String
     var urlParamList: [UrlParam]
+    var lastRequestTime: NSDate!
     
     public init(method: String, url: String, urlParamList: [UrlParam]) {
         self.url = url
@@ -56,6 +57,7 @@ public class APIRequest {
         if let item = requestDataItem {
             item.method = method
             item.url = url
+            item.lastRequestTime = lastRequestTime
             
             var paramSet = [AnyObject]()
             for item in urlParamList {

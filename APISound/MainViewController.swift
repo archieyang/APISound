@@ -194,6 +194,7 @@ class MainViewController: UIViewController {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
                 apiRequest!.url = urlField.text
                 apiRequest!.method = methodField.text
+                apiRequest!.lastRequestTime = NSDate()
                 apiRequest!.save()
                 responseViewController.request = apiRequest!
             }

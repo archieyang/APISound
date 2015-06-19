@@ -24,6 +24,7 @@ class APIRequestManager {
         var allRequests = [APIRequest]()
         
         let fetchRequest = NSFetchRequest(entityName: "RequestDataItem")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastRequestTime", ascending: false)]
         if let requests = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [RequestDataItem] {
             for request in requests {
                 allRequests.append(APIRequest(requestDataItem: request))
