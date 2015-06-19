@@ -22,7 +22,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         
-        APIRequest.fetchAll { apiRequests in
+        APIRequestManager.sharedInstance.fetchAll { apiRequests in
             self.requestList = apiRequests
             self.historyTableView.reloadData()
             

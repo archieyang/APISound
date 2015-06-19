@@ -20,6 +20,7 @@
 		216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */; };
 		216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */; };
 		216EED841B1D329900121545 /* UrlParamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EED831B1D329900121545 /* UrlParamTest.swift */; };
+		21706E511B3396F30079880A /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21706E501B3396F30079880A /* APIRequestManager.swift */; };
 		217CEEFA1B2D12F8001EAFF7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */; };
 		217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */; };
 		2181C4A51B30F80A000FF708 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181C4A41B30F80A000FF708 /* APIRequest.swift */; };
@@ -75,6 +76,7 @@
 		216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodTextFieldDelegate.swift; sourceTree = "<group>"; };
 		216B005C1B22807D005C974F /* UrlParamTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTableViewDelegate.swift; sourceTree = "<group>"; };
 		216EED831B1D329900121545 /* UrlParamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamTest.swift; sourceTree = "<group>"; };
+		21706E501B3396F30079880A /* APIRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewCell.swift; sourceTree = "<group>"; };
 		2181C4A41B30F80A000FF708 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				2163DD591B2915870017AEEE /* ResponseViewController.swift */,
 				217CEEF91B2D12F8001EAFF7 /* HistoryViewController.swift */,
 				217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */,
+				21706E501B3396F30079880A /* APIRequestManager.swift */,
 			);
 			path = APISound;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */,
 				217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */,
 				21E21DC31B1013AB003D00B4 /* AppDelegate.swift in Sources */,
+				21706E511B3396F30079880A /* APIRequestManager.swift in Sources */,
 				213DBC011B11EA3400773D1F /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

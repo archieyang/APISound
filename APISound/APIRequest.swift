@@ -29,7 +29,7 @@ public class APIRequest {
         self.urlParamList = [UrlParam]()
     }
     
-    private init(requestDataItem: RequestDataItem) {
+    init(requestDataItem: RequestDataItem) {
         self.requestDataItem = requestDataItem
         
         url = requestDataItem.url
@@ -68,21 +68,6 @@ public class APIRequest {
             item.params = NSOrderedSet(array: paramSet)
             
         }
-
-    }
-    
-    public class func fetchAll(callback: ([APIRequest]) -> Void) -> Void {
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        var allRequests = [APIRequest]()
-        
-        let fetchRequest = NSFetchRequest(entityName: "RequestDataItem")
-        if let requests = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [RequestDataItem] {
-            for request in requests {
-                allRequests.append(APIRequest(requestDataItem: request))
-            }
-        }
-        
-        callback(allRequests)
 
     }
 }
