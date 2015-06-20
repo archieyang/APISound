@@ -9,9 +9,11 @@
 import UIKit
 
 class ResponseViewController: UIViewController {
+    var prettyFormatted = true
+    
     var rawResponseString: String? {
         didSet {
-            responseTextView.text = rawResponseString
+            refreshText()
         }
     }
     var request: APIRequest!
@@ -26,14 +28,15 @@ class ResponseViewController: UIViewController {
     @IBAction func formatChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.responseTextView.text = "TODO: pretty response text"
+            prettyFormatted = true
         case 1:
-            self.responseTextView.text = rawResponseString
+            prettyFormatted = false
         default:
-            self.responseTextView.text = "TODO: pretty response text"
+            prettyFormatted = false
         }
+        
+        refreshText()
     }
-    
 
     override func viewDidLoad() {
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
@@ -42,19 +45,26 @@ class ResponseViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         HttpFetcher().execute(request) { res in
             self.rawResponseString = res
-            println(res)
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func refreshText() -> Void {
+        if let responseString = rawResponseString {
+            responseTextView.text = prettyFormatted ? JSONStringify(responseString) : responseString
+        }
     }
-    */
+    
+    private func JSONStringify(jsonString: String) -> String {
+
+        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            if let jsonObject: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) {
+                if let formattedData = NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions.PrettyPrinted, error: nil) {
+                    return NSString(data:formattedData, encoding: NSUTF8StringEncoding) as! String
+                }
+            }
+        }
+        
+        return "Pretty Format Not Supported"
+    }
 
 }
