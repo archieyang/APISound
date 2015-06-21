@@ -8,16 +8,21 @@
 
 import UIKit
 
-class ResponseViewController: UIViewController {
+class ResponseViewController: UIViewController, UITabBarDelegate {
+    enum ResponsePart: Int {
+        case Body = 0, Headers
+    }
+    
+    var currentPart: ResponsePart!
+    
     var prettyFormatted = true
     
-    var rawResponseString: String? {
-        didSet {
-            refreshText()
-        }
-    }
+    var response: APIResponse?
+    
     var request: APIRequest!
     
+    @IBOutlet weak var prettySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var bottomTabBar: UITabBar!
     
     @IBOutlet weak var responseTextView: UITextView!
     
@@ -38,19 +43,44 @@ class ResponseViewController: UIViewController {
         refreshText()
     }
 
+
+    
     override func viewDidLoad() {
+        bottomTabBar.delegate = self
+        bottomTabBar.selectedItem = (bottomTabBar.items as! [UITabBarItem])[0]
+        currentPart = .Body
+        
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
     }
     
     override func viewWillAppear(animated: Bool) {
-        HttpFetcher().execute(request) { res in
-            self.rawResponseString = res
+        HttpFetcher().execute(request) { response in
+            self.response = response
+            self.refreshText()
         }
     }
     
+    //MARK: UIBottomBarDelegate
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        currentPart = ResponsePart(rawValue: item.tag)
+        println("currentPart = \(currentPart.rawValue)")
+        refreshText()
+    }
+    
+    //MARK: Helpers
+    
     private func refreshText() -> Void {
-        if let responseString = rawResponseString {
-            responseTextView.text = prettyFormatted ? JSONStringify(responseString) : responseString
+        
+        switch currentPart! {
+        case .Body:
+            prettySegmentedControl.hidden = false
+            if let responseString = response?.body {
+                responseTextView.text = prettyFormatted ? JSONStringify(responseString) : responseString
+            }
+            
+        case .Headers:
+            prettySegmentedControl.hidden = true
+            responseTextView.text = response?.getFormattedHeader()
         }
     }
     

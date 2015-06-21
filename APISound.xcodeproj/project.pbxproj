@@ -25,6 +25,7 @@
 		217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */; };
 		2181C4A51B30F80A000FF708 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181C4A41B30F80A000FF708 /* APIRequest.swift */; };
 		21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E4C1B17E9E400C6676A /* HttpFetcher.swift */; };
+		218B2D841B365F5100A09F60 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218B2D831B365F5100A09F60 /* APIResponse.swift */; };
 		21E21DC31B1013AB003D00B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DC21B1013AB003D00B4 /* AppDelegate.swift */; };
 		21E21DC61B1013AB003D00B4 /* APISound.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */; };
 		21E21DCB1B1013AB003D00B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E21DC91B1013AB003D00B4 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		217CEEFB1B2D16A7001EAFF7 /* HistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewCell.swift; sourceTree = "<group>"; };
 		2181C4A41B30F80A000FF708 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		21827E4C1B17E9E400C6676A /* HttpFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFetcher.swift; sourceTree = "<group>"; };
+		218B2D831B365F5100A09F60 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		21E21DBD1B1013AB003D00B4 /* APISound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APISound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E21DC11B1013AB003D00B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E21DC21B1013AB003D00B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				2181C4A41B30F80A000FF708 /* APIRequest.swift */,
 				215F65121B15499D00FFD055 /* UrlParam.swift */,
 				21827E4C1B17E9E400C6676A /* HttpFetcher.swift */,
+				218B2D831B365F5100A09F60 /* APIResponse.swift */,
 			);
 			name = HttpFetcher;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */,
 				216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */,
 				216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */,
+				218B2D841B365F5100A09F60 /* APIResponse.swift in Sources */,
 				2163DD5A1B2915870017AEEE /* ResponseViewController.swift in Sources */,
 				213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */,
 				217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */,
