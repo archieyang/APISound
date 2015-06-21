@@ -263,29 +263,19 @@
         <!--Response View Controller-->
         <scene sceneID="0dl-UZ-GVd">
             <objects>
-                <viewController id="Jxo-2b-u29" customClass="ResponseViewController" customModule="APISound" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jxo-2b-u29" customClass="ResponseViewController" customModule="APISound" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LaQ-Jl-96B"/>
                         <viewControllerLayoutGuide type="bottom" id="TTs-tg-rRk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wCU-F2-9os">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BE4-iR-dYJ">
-                                <rect key="frame" x="250" y="72" width="101" height="29"/>
-                                <segments>
-                                    <segment title="Pretty"/>
-                                    <segment title="Raw"/>
-                                </segments>
-                                <connections>
-                                    <action selector="formatChanged:" destination="Jxo-2b-u29" eventType="valueChanged" id="vbx-kR-e8n"/>
-                                </connections>
-                            </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -298,22 +288,20 @@
                                 </items>
                             </tabBar>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="BE4-iR-dYJ" secondAttribute="bottom" constant="8" symbolic="YES" id="5Wy-i0-ugd"/>
-                            <constraint firstItem="BE4-iR-dYJ" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="87V-UJ-OqQ"/>
-                            <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" id="I9y-Rn-knU"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="P35-iU-NV7"/>
                             <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="0ig-As-fqB" secondAttribute="bottom" symbolic="YES" id="RvK-bz-b19"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" constant="-16" id="Vxh-tH-lc4"/>
-                            <constraint firstAttribute="centerX" secondItem="BE4-iR-dYJ" secondAttribute="centerX" id="Zrd-Ux-NX4"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="bFJ-cS-lue"/>
-                            <constraint firstItem="0ig-As-fqB" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" id="cUd-Hi-olE"/>
+                            <constraint firstItem="0ig-As-fqB" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" symbolic="YES" id="cUd-Hi-olE"/>
                             <constraint firstItem="0ig-As-fqB" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="ecK-f3-EPr"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="pyJ-gl-dzS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0ig-As-fqB" secondAttribute="trailing" constant="-16" id="qyb-YA-3gu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="I9y-Rn-knU"/>
+                                <exclude reference="pyJ-gl-dzS"/>
                             </mask>
                         </variation>
                     </view>
@@ -324,6 +312,17 @@
                                 <action selector="back:" destination="Jxo-2b-u29" id="dpJ-Lv-10n"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="BE4-iR-dYJ">
+                            <rect key="frame" x="250" y="8" width="101" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Pretty"/>
+                                <segment title="Raw"/>
+                            </segments>
+                            <connections>
+                                <action selector="formatChanged:" destination="Jxo-2b-u29" eventType="valueChanged" id="vbx-kR-e8n"/>
+                            </connections>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTabBar" destination="0ig-As-fqB" id="2GL-fR-nrq"/>
