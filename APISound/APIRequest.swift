@@ -16,18 +16,21 @@ public class APIRequest {
     var url: String
     var method: String
     var urlParamList: [UrlParam]
+    var headerList:[UrlParam]
     var lastRequestTime: NSDate!
     
-    public init(method: String, url: String, urlParamList: [UrlParam]) {
+    public init(method: String, url: String, urlParamList: [UrlParam], headerList: [UrlParam]) {
         self.url = url
         self.method = method
         self.urlParamList = urlParamList
+        self.headerList = headerList
     }
     
     public init(method: String, url: String) {
         self.url = url
         self.method = method
         self.urlParamList = [UrlParam]()
+        self.headerList = [UrlParam]()
     }
     
     init(requestDataItem: RequestDataItem) {
@@ -36,6 +39,7 @@ public class APIRequest {
         url = requestDataItem.url
         method = requestDataItem.method
         urlParamList = [UrlParam]()
+        headerList = [UrlParam]()
         
         for param in requestDataItem.params.array as! [UrlParamItem] {
             urlParamList.append(UrlParam(k: param.key, v: param.value))

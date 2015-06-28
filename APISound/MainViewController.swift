@@ -102,6 +102,13 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction func addHeader(sender: UIButton) {
+        showUrlParamDialog("Add Headers", message: "Add Header field", defaultUrlParams: nil){ (param) in
+            self.apiRequest!.headerList.append(param)
+            self.urlParamsTableView.reloadData()
+        }
+        
+    }
     //MARK: Helper functions
     
     func getUrlParam(atIndex index: Int) -> UrlParam? {
