@@ -76,11 +76,13 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
             prettySegmentedControl.hidden = false
             if let responseString = response?.body {
                 responseTextView.text = prettyFormatted ? JSONStringify(responseString) : responseString
+            } else {
+                responseTextView.text = "No Response"
             }
             
         case .Headers:
             prettySegmentedControl.hidden = true
-            responseTextView.text = response?.getFormattedHeader()
+            responseTextView.text = response?.getFormattedHeader() ?? "No Response"
         }
     }
     
