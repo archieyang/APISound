@@ -3,7 +3,7 @@
 use_frameworks!
 
 target 'APISound' do
-    pod 'Alamofire', '~> 1.2'
+    pod 'Alamofire', '~> 1.3'
 end
 
 target 'APISoundTests' do

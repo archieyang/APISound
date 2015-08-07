@@ -31,7 +31,13 @@ class HttpFetcher {
             println(urlParam.key + urlParam.value)
         }
         
-        Alamofire.request(.GET, request.url, parameters: params).responseString {
+        var headers = [String : String]()
+        
+        for headerItem in request.headerList {
+            headers[headerItem.key] = headerItem.value
+        }
+        
+        Alamofire.request(.GET, request.url, parameters: params, headers: headers).responseString {
             (_, response, string, _) in
             
             if let res = response {
