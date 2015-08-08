@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var methodPickerView: UIPickerView!
     @IBOutlet weak var urlParamsTableView: UITableView!
     
-    let METHODS = ["GET", "POST"]
+    let METHODS = HttpFetcher.METHODS
     
     
     var apiRequest: APIRequest? {
