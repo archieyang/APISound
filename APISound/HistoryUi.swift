@@ -7,6 +7,6 @@
 //
 
 import Foundation
-protocol HistoryUi {
+protocol HistoryUi: BaseUi {
     func setItems(items: [APIRequest]) -> Void
 }

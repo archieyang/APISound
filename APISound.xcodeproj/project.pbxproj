@@ -15,6 +15,8 @@
 		2164C1451B1BE4D900F5D14E /* KIF+SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */; };
 		2164C1471B1BE54700F5D14E /* ShowUrlParamTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */; };
 		2165F3BD1B76F4EF007C4702 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165F3BC1B76F4EF007C4702 /* HistoryPresenter.swift */; };
+		2165F3C51B772A83007C4702 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165F3C41B772A83007C4702 /* BasePresenter.swift */; };
+		2165F3C71B772B16007C4702 /* BaseUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165F3C61B772B16007C4702 /* BaseUi.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
 		216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */; };
 		216965D81B27C4DC007AAB11 /* MethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */; };
@@ -74,6 +76,8 @@
 		2164C1441B1BE4D900F5D14E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
 		2164C1461B1BE54700F5D14E /* ShowUrlParamTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowUrlParamTableTests.swift; sourceTree = "<group>"; };
 		2165F3BC1B76F4EF007C4702 /* HistoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		2165F3C41B772A83007C4702 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		2165F3C61B772B16007C4702 /* BaseUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUi.swift; sourceTree = "<group>"; };
 		21663B281B13FB4B002CD59A /* UrlParamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamCell.swift; sourceTree = "<group>"; };
 		216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDataSource.swift; sourceTree = "<group>"; };
 		216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				21E318111B75D56400B27C9B /* HistoryUi.swift */,
+				2165F3C61B772B16007C4702 /* BaseUi.swift */,
 			);
 			name = Ui;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				2165F3BC1B76F4EF007C4702 /* HistoryPresenter.swift */,
+				2165F3C41B772A83007C4702 /* BasePresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -595,6 +601,8 @@
 				216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */,
 				216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */,
 				218B2D841B365F5100A09F60 /* APIResponse.swift in Sources */,
+				2165F3C71B772B16007C4702 /* BaseUi.swift in Sources */,
+				2165F3C51B772A83007C4702 /* BasePresenter.swift in Sources */,
 				2163DD5A1B2915870017AEEE /* ResponseViewController.swift in Sources */,
 				213DBBFF1B11E90100773D1F /* SlideMenuController.swift in Sources */,
 				217CEEFC1B2D16A7001EAFF7 /* HistoryViewCell.swift in Sources */,
