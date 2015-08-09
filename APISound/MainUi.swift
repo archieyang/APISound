@@ -10,4 +10,6 @@ import Foundation
 
 protocol MainUi: BaseUi {
     func setCurrentItem(apiRequest: APIRequest) -> Void
+    func getUrlString() -> String
+    func getMethodString() -> String
 }

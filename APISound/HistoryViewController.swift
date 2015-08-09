@@ -34,11 +34,6 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     override func viewWillAppear(animated: Bool) {
         historyPresenter.attachUi(self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: Table View Data Source
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

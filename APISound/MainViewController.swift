@@ -25,6 +25,10 @@ class MainViewController: UIViewController, MainUi {
                 urlField.text = request.url
                 methodField.text = request.method
                 self.urlParamsTableView.reloadData()
+                
+                if request !== mainPresenter.apiRequest! {
+                    mainPresenter.apiRequest = request
+                }
             }
         }
     }
@@ -94,31 +98,19 @@ class MainViewController: UIViewController, MainUi {
     
     @IBAction func addUrlParamPair(sender: UIButton) {
         showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
-            self.apiRequest!.urlParamList.append(param)
+            self.callbacks!.addRequestParam(param)
             self.urlParamsTableView.reloadData()
         }
     }
     
     @IBAction func addHeader(sender: UIButton) {
         showUrlParamDialog("Add Headers", message: "Add Header field", defaultUrlParams: nil){ (param) in
-            self.apiRequest!.headerList.append(param)
+            self.callbacks!.addHeaderParam(param)
             self.urlParamsTableView.reloadData()
         }
         
     }
     //MARK: Helper functions
-    
-    func getUrlParam(atIndex index: Int) -> UrlParam? {
-        if index < 0 {
-            return nil
-        }
-        
-        if index >= apiRequest!.urlParamList.count {
-            return nil
-        }
-        
-        return apiRequest!.urlParamList[index]
-    }
     
     func showUrlParamDialog(title: String , message: String, defaultUrlParams: UrlParam?, actionCallback: (UrlParam) -> Void) {
         var paramOperateController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -206,14 +198,19 @@ class MainViewController: UIViewController, MainUi {
 
     }
     
+    func getUrlString() -> String {
+        return urlField.text
+    }
+    
+    func getMethodString() -> String {
+        return methodField.text
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
-                apiRequest!.url = urlField.text
-                apiRequest!.method = methodField.text
-                apiRequest!.lastRequestTime = NSDate()
-                apiRequest!.save()
+                callbacks?.saveCurrentRequest()
                 responseViewController.request = apiRequest!
             }
         }
