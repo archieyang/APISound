@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainUi {
+    var mainPresenter = MainPresenter()
+    var callbacks: MainUiCallbacks?
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
@@ -16,7 +18,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var urlParamsTableView: UITableView!
     
     let METHODS = HttpFetcher.METHODS
-    
     
     var apiRequest: APIRequest? {
         didSet {
@@ -61,12 +62,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let request = apiRequest {
-            
-        } else {
-            apiRequest = APIRequest(method: METHODS[0], url: "")
-        }
+    
+        mainPresenter.attachUi(self)
         
         urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
         urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
@@ -92,7 +89,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func createNewRequest(sender: UIBarButtonItem) {
-        self.apiRequest = APIRequest(method: METHODS[0], url: "")
+        self.apiRequest = callbacks!.createNewRequest()
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
@@ -195,6 +192,20 @@ class MainViewController: UIViewController {
         
         self.presentViewController(paramOperateController, animated: true, completion: nil)
     }
+    
+    //MARK: MainUi
+    
+    func setCurrentItem(request: APIRequest) {
+        apiRequest = request
+    }
+    
+    func setUiCallbacks(c: BaseUiCallbacks) {
+        if let mainUiCallacks = c as? MainUiCallbacks {
+            callbacks = mainUiCallacks
+        }
+
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {

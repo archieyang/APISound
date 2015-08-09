@@ -20,9 +20,19 @@ class BasePresenter {
     func attachUi(ui: U) -> Void {
         mUi = ui
         populateUi()
+        onAttachToUi()
     }
     
     func populateUi() -> Void {
         
     }
+    
+    func onAttachToUi() -> Void {
+        
+    }
+    
+}
+
+protocol BaseUiCallbacks {
+    
 }

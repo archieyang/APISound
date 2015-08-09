@@ -61,5 +61,9 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     func setItems(items: [APIRequest]) {
         requestList = items
     }
+    
+    func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {
+        
+    }
 
 }
