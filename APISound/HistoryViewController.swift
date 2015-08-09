@@ -9,10 +9,16 @@
 import UIKit
 import CoreData
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource, UITableViewDelegate {
+    var historyPresenter = HistoryPresenter()
+    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var requestList = [APIRequest]()
+    var requestList = [APIRequest]() {
+        didSet {
+            self.historyTableView.reloadData()
+        }
+    }
     
     var mainViewController: MainViewController {
         return (self.slideMenuController()?.mainViewController as! UINavigationController).topViewController as! MainViewController
@@ -26,18 +32,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        APIRequestManager.sharedInstance.fetchAll { apiRequests in
-            self.requestList = apiRequests
-            self.historyTableView.reloadData()
-            
-            for request in self.requestList {
-                for param in request.urlParamList{
-                    println(param.key + " -> " + param.value)
-                }
-            }
-        }
-        
+        historyPresenter.attachUi(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +56,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.mainViewController.apiRequest = requestList[indexPath.row]
         self.slideMenuController()?.closeLeft()
+    }
+    
+    func setItems(items: [APIRequest]) {
+        requestList = items
     }
 
 }
