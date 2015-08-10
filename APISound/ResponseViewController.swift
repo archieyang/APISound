@@ -17,9 +17,15 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     var prettyFormatted = true
     
-    var response: APIResponse?
+    var response: APIResponse? {
+        didSet {
+            refreshText()
+        }
+    }
     
     var request: APIRequest!
+    
+    var responsePresenter: ResponsePresenter!
     
     @IBOutlet weak var prettySegmentedControl: UISegmentedControl!
     @IBOutlet weak var bottomTabBar: UITabBar!
@@ -54,10 +60,8 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        HttpFetcher().execute(request) { response in
-            self.response = response
-            self.refreshText()
-        }
+        responsePresenter = ResponsePresenter(apiRequest: request)
+        responsePresenter.attachUi(self)
     }
     
     //MARK: UIBottomBarDelegate
@@ -99,4 +103,14 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
         return "Pretty Format Not Supported"
     }
 
+}
+
+extension ResponseViewController: ResponseUi {
+    func setUiCallbacks(callbacks: BaseUiCallbacks) {
+        
+    }
+    
+    func setResponse(resp: APIResponse?) {
+        response = resp
+    }
 }

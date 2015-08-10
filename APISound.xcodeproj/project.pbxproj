@@ -20,6 +20,8 @@
 		2165F3CD1B774425007C4702 /* MainUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165F3CC1B774425007C4702 /* MainUi.swift */; };
 		2165F3CF1B7744C9007C4702 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165F3CE1B7744C9007C4702 /* MainPresenter.swift */; };
 		21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21663B281B13FB4B002CD59A /* UrlParamCell.swift */; };
+		2167F71D1B78289F0023FF8E /* ResponsePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2167F71C1B78289F0023FF8E /* ResponsePresenter.swift */; };
+		2167F71F1B7828EC0023FF8E /* ResponseUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2167F71E1B7828EC0023FF8E /* ResponseUi.swift */; };
 		216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */; };
 		216965D81B27C4DC007AAB11 /* MethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */; };
 		216965DA1B27CA88007AAB11 /* MethodTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */; };
@@ -83,6 +85,8 @@
 		2165F3CC1B774425007C4702 /* MainUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUi.swift; sourceTree = "<group>"; };
 		2165F3CE1B7744C9007C4702 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		21663B281B13FB4B002CD59A /* UrlParamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlParamCell.swift; sourceTree = "<group>"; };
+		2167F71C1B78289F0023FF8E /* ResponsePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsePresenter.swift; sourceTree = "<group>"; };
+		2167F71E1B7828EC0023FF8E /* ResponseUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseUi.swift; sourceTree = "<group>"; };
 		216965D51B27C19C007AAB11 /* MethodPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDataSource.swift; sourceTree = "<group>"; };
 		216965D71B27C4DC007AAB11 /* MethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodPickerDelegate.swift; sourceTree = "<group>"; };
 		216965D91B27CA88007AAB11 /* MethodTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodTextFieldDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				21E318111B75D56400B27C9B /* HistoryUi.swift */,
 				2165F3C61B772B16007C4702 /* BaseUi.swift */,
 				2165F3CC1B774425007C4702 /* MainUi.swift */,
+				2167F71E1B7828EC0023FF8E /* ResponseUi.swift */,
 			);
 			name = Ui;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				2165F3BC1B76F4EF007C4702 /* HistoryPresenter.swift */,
 				2165F3C41B772A83007C4702 /* BasePresenter.swift */,
 				2165F3CE1B7744C9007C4702 /* MainPresenter.swift */,
+				2167F71C1B78289F0023FF8E /* ResponsePresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2167F71D1B78289F0023FF8E /* ResponsePresenter.swift in Sources */,
 				21663B291B13FB4B002CD59A /* UrlParamCell.swift in Sources */,
 				21827E4D1B17E9E400C6676A /* HttpFetcher.swift in Sources */,
 				21EA529E1B2FAC230031D20C /* RequestDataItem.swift in Sources */,
@@ -623,6 +630,7 @@
 				216965D61B27C19C007AAB11 /* MethodPickerDataSource.swift in Sources */,
 				216B005D1B22807D005C974F /* UrlParamTableViewDelegate.swift in Sources */,
 				218B2D841B365F5100A09F60 /* APIResponse.swift in Sources */,
+				2167F71F1B7828EC0023FF8E /* ResponseUi.swift in Sources */,
 				2165F3C71B772B16007C4702 /* BaseUi.swift in Sources */,
 				2165F3C51B772A83007C4702 /* BasePresenter.swift in Sources */,
 				2163DD5A1B2915870017AEEE /* ResponseViewController.swift in Sources */,
