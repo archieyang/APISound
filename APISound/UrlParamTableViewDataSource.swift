@@ -34,6 +34,10 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.tableView(tableView, numberOfRowsInSection: section) == 0 {
+            return nil
+        }
+        
         if section == Section.Header.rawValue {
             return "Headers"
         } else {
