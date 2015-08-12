@@ -56,6 +56,9 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
         bottomTabBar.selectedItem = (bottomTabBar.items as! [UITabBarItem])[0]
         currentPart = .Body
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barTintColor = UIColor(red:0, green: 124, blue: 182)
+        
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
     }
     
