@@ -343,30 +343,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading..." translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
-                                <rect key="frame" x="0.0" y="8" width="600" height="479"/>
+                                <rect key="frame" x="0.0" y="8" width="600" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ig-As-fqB">
-                                <rect key="frame" x="0.0" y="487" width="600" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="Body" id="nt8-xS-mUo"/>
-                                    <tabBarItem tag="1" title="Headers" id="hLC-2T-GHX"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="P35-iU-NV7"/>
-                            <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="0ig-As-fqB" secondAttribute="bottom" symbolic="YES" id="RvK-bz-b19"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" constant="-16" id="Vxh-tH-lc4"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="bFJ-cS-lue"/>
-                            <constraint firstItem="0ig-As-fqB" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" symbolic="YES" id="cUd-Hi-olE"/>
-                            <constraint firstItem="0ig-As-fqB" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="ecK-f3-EPr"/>
+                            <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" constant="8" symbolic="YES" id="bwl-R8-kcV"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="pyJ-gl-dzS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0ig-As-fqB" secondAttribute="trailing" constant="-16" id="qyb-YA-3gu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -383,11 +372,11 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="BE4-iR-dYJ">
-                            <rect key="frame" x="250" y="8" width="101" height="29"/>
+                            <rect key="frame" x="231" y="7" width="139" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Pretty"/>
-                                <segment title="Raw"/>
+                                <segment title="Body"/>
+                                <segment title="Headers"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -396,7 +385,6 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomTabBar" destination="0ig-As-fqB" id="2GL-fR-nrq"/>
                         <outlet property="prettySegmentedControl" destination="BE4-iR-dYJ" id="jVz-vX-AOt"/>
                         <outlet property="responseTextView" destination="J00-84-G4C" id="aPw-un-qsK"/>
                     </connections>

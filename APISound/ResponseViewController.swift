@@ -15,8 +15,6 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     var currentPart: ResponsePart!
     
-    var prettyFormatted = true
-    
     var response: APIResponse? {
         didSet {
             refreshText()
@@ -28,7 +26,6 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     var responsePresenter: ResponsePresenter!
     
     @IBOutlet weak var prettySegmentedControl: UISegmentedControl!
-    @IBOutlet weak var bottomTabBar: UITabBar!
     
     @IBOutlet weak var responseTextView: UITextView!
     
@@ -37,23 +34,21 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func formatChanged(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            prettyFormatted = true
-        case 1:
-            prettyFormatted = false
-        default:
-            prettyFormatted = false
-        }
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            currentPart = ResponsePart(rawValue: 0)
+//        case 1:
+//            prettyFormatted = false
+//        default:
+//            prettyFormatted = false
+//        }
+        currentPart = ResponsePart(rawValue: sender.selectedSegmentIndex)
         
         refreshText()
     }
 
-
     
     override func viewDidLoad() {
-        bottomTabBar.delegate = self
-        bottomTabBar.selectedItem = (bottomTabBar.items as! [UITabBarItem])[0]
         currentPart = .Body
         
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
@@ -77,30 +72,28 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
         
         switch currentPart! {
         case .Body:
-            prettySegmentedControl.hidden = false
             if let responseString = response?.body {
-                responseTextView.text = prettyFormatted ? JSONStringify(responseString) : responseString
+                responseTextView.text = JSONStringify(responseString) ?? responseString
             } else {
                 responseTextView.text = "No Response"
             }
             
         case .Headers:
-            prettySegmentedControl.hidden = true
             responseTextView.text = response?.getFormattedHeader() ?? "No Response"
         }
     }
     
-    private func JSONStringify(jsonString: String) -> String {
+    private func JSONStringify(jsonString: String) -> String? {
 
         if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             if let jsonObject: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) {
                 if let formattedData = NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions.PrettyPrinted, error: nil) {
-                    return NSString(data:formattedData, encoding: NSUTF8StringEncoding) as! String
+                    return NSString(data:formattedData, encoding: NSUTF8StringEncoding) as? String
                 }
             }
         }
         
-        return "Pretty Format Not Supported"
+        return nil
     }
 
 }
