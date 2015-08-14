@@ -11,8 +11,11 @@ import CoreData
 
 class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource, UITableViewDelegate {
     var historyPresenter = HistoryPresenter()
-    
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var historyGroups = [HistorySectionItem]() {
+        didSet {
+            self.historyTableView.reloadData()
+        }
+    }
     
     var requestList = [APIRequest]() {
         didSet {
@@ -36,6 +39,16 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     }
     
     //MARK: Table View Data Source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return historyGroups.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let date = historyGroups[section].mDate
+        
+        return date
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("historyViewCell", forIndexPath: indexPath) as! HistoryViewCell
         cell.urlLabel.text = requestList[indexPath.row].url
@@ -43,7 +56,7 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return requestList.count
+        return historyGroups[section].mSize
     }
     
     //MARK: Table View Delegate
@@ -55,6 +68,10 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     
     func setItems(items: [APIRequest]) {
         requestList = items
+    }
+    
+    func setGroups(groups: [HistorySectionItem]) -> Void {
+        historyGroups = groups
     }
     
     func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {

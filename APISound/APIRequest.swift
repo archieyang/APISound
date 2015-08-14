@@ -40,6 +40,7 @@ public class APIRequest {
         method = requestDataItem.method
         urlParamList = [UrlParam]()
         headerList = [UrlParam]()
+        lastRequestTime = requestDataItem.lastRequestTime
         
         for param in requestDataItem.params.array as! [UrlParamItem] {
             urlParamList.append(UrlParam(k: param.key, v: param.value))
