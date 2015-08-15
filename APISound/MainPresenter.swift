@@ -72,11 +72,23 @@ extension MainPresenter: MainUiCallbacks {
         return apiRequest!.urlParamList[index]
     }
     
-    func saveCurrentRequest() {
-        apiRequest!.url = mainUi!.getUrlString()
-        apiRequest!.method = mainUi!.getMethodString()
-        apiRequest!.lastRequestTime = NSDate()
-        apiRequest!.save()
+    func saveCurrentRequest() -> APIRequest? {
+        if let request = apiRequest, ui = mainUi{
+            let url = ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            if url.hasPrefix("http://") || url.hasPrefix("https://") {
+                request.url = url
+            } else {
+                request.url = "http://" + url
+            }
+            request.method = mainUi!.getMethodString()
+            request.lastRequestTime = NSDate()
+            request.save()
+
+            return request
+        } else {
+            return nil
+        }
+
     }
 }
 
@@ -85,5 +97,5 @@ protocol MainUiCallbacks: BaseUiCallbacks {
     func addRequestParam(param: UrlParam) -> Void
     func addHeaderParam(param: UrlParam) -> Void
     func getUrlParam(atIndex index: Int) -> UrlParam?
-    func saveCurrentRequest() -> Void
+    func saveCurrentRequest() -> APIRequest?
 }
