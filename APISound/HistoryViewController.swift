@@ -28,6 +28,7 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     }
 
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var noDataHintLabel: UILabel!
     
     override func viewDidLoad() {
         historyTableView.dataSource = self
@@ -40,6 +41,12 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     
     //MARK: Table View Data Source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if requestList.count == 0 {
+            noDataHintLabel.hidden = false
+        } else {
+            noDataHintLabel.hidden = true
+        }
+        
         return historyGroups.count
     }
     
