@@ -352,8 +352,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lu0-gx-MOO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkg-Kl-gne">
+                                        <rect key="frame" x="20" y="5" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9o3-Ru-emT"/>
+                                    <constraint firstAttribute="trailing" secondItem="kkg-Kl-gne" secondAttribute="trailing" constant="20" symbolic="YES" id="MxS-jL-jcX"/>
+                                    <constraint firstAttribute="bottom" secondItem="kkg-Kl-gne" secondAttribute="bottom" constant="-46" id="OjH-Ff-VuQ"/>
+                                    <constraint firstAttribute="centerY" secondItem="kkg-Kl-gne" secondAttribute="centerY" id="hv5-a5-OmN"/>
+                                    <constraint firstItem="kkg-Kl-gne" firstAttribute="leading" secondItem="lu0-gx-MOO" secondAttribute="leading" constant="20" symbolic="YES" id="uVc-Vj-PFC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OjH-Ff-VuQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="528"/>
+                                <rect key="frame" x="0.0" y="30" width="600" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -370,21 +394,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lu0-gx-MOO" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="Ap6-Ub-Ic1"/>
                             <constraint firstAttribute="centerX" secondItem="3PJ-aI-WTe" secondAttribute="centerX" id="E0X-KH-Rr6"/>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="P35-iU-NV7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lu0-gx-MOO" secondAttribute="trailing" constant="-16" id="MF8-Pf-PE0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" constant="-16" id="Vxh-tH-lc4"/>
                             <constraint firstAttribute="centerY" secondItem="nXv-tM-0FL" secondAttribute="centerY" id="Yrc-QC-gOf"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="bFJ-cS-lue"/>
                             <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" constant="8" symbolic="YES" id="bwl-R8-kcV"/>
                             <constraint firstAttribute="centerX" secondItem="nXv-tM-0FL" secondAttribute="centerX" id="iLp-X9-qrC"/>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="pyJ-gl-dzS"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="lu0-gx-MOO" secondAttribute="bottom" id="nvg-Z6-Dix"/>
+                            <constraint firstItem="lu0-gx-MOO" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="oaY-9F-xKD"/>
                             <constraint firstAttribute="centerY" secondItem="3PJ-aI-WTe" secondAttribute="centerY" id="zYi-yk-esI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="pyJ-gl-dzS"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Boa-NY-MDL">
                         <nil key="title"/>
@@ -411,6 +432,8 @@
                         <outlet property="loadingIndicator" destination="3PJ-aI-WTe" id="0HC-gY-yrg"/>
                         <outlet property="noResponseHintLabel" destination="nXv-tM-0FL" id="qFo-Ek-Sxg"/>
                         <outlet property="prettySegmentedControl" destination="BE4-iR-dYJ" id="jVz-vX-AOt"/>
+                        <outlet property="responseStatusLine" destination="kkg-Kl-gne" id="GYj-d2-ZXt"/>
+                        <outlet property="responseStatusLineView" destination="lu0-gx-MOO" id="Mnt-GE-wte"/>
                         <outlet property="responseTextView" destination="J00-84-G4C" id="aPw-un-qsK"/>
                     </connections>
                 </viewController>

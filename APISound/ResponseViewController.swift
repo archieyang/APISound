@@ -29,6 +29,9 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var responseTextView: UITextView!
     
+    @IBOutlet weak var responseStatusLine: UILabel!
+    @IBOutlet weak var responseStatusLineView: UIView!
+
     @IBOutlet weak var noResponseHintLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBAction func back(sender: UIBarButtonItem) {
@@ -103,6 +106,11 @@ extension ResponseViewController: ResponseUi {
     
     func setResponse(resp: APIResponse?) {
         response = resp
+        if let status = response?.getStatusLine() {
+            responseStatusLine.text = status
+        } else {
+            responseStatusLineView.hidden = true
+        }
     }
     
     func setLoadingIndicatorHidden(hidden: Bool) {

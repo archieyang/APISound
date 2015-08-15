@@ -9,13 +9,23 @@
 import Foundation
 import Alamofire
 
-class APIResponse {
-    var response: NSHTTPURLResponse?
-    var body: String?
+struct APIResponse {
+    let response: NSHTTPURLResponse?
+    let body: String?
+    private let statusCode: Int?
     
     init(response: NSHTTPURLResponse?, body: String?) {
         self.response = response
         self.body = body
+        self.statusCode = response?.statusCode
+    }
+    
+    func getStatusLine() -> String? {
+        if let status = statusCode {
+            return "\(status) \(NSHTTPURLResponse.localizedStringForStatusCode(status).capitalizedString)"
+        } else {
+            return nil
+        }
     }
     
     func getFormattedHeader() -> String? {
