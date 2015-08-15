@@ -10,4 +10,5 @@ import Foundation
 
 protocol ResponseUi: BaseUi {
     func setResponse(response: APIResponse?) -> Void
+    func setLoadingIndicatorHidden(hidden: Bool) -> Void
 }

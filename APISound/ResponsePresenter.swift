@@ -25,8 +25,10 @@ class ResponsePresenter: BasePresenter {
     }
     
     override func populateUi() {
+        self.responseUi?.setLoadingIndicatorHidden(false)
         HttpFetcher().execute(request) { response in
-           self.responseUi?.setResponse(response)
+            self.responseUi?.setLoadingIndicatorHidden(true)
+            self.responseUi?.setResponse(response)
         }
     }
     

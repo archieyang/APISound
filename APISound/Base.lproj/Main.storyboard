@@ -352,20 +352,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading..." translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
-                                <rect key="frame" x="0.0" y="8" width="600" height="520"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-84-G4C">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3PJ-aI-WTe">
+                                <rect key="frame" x="290" y="258" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No response" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-tM-0FL">
+                                <rect key="frame" x="207" y="249" width="187" height="39"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" constant="8" symbolic="YES" id="P35-iU-NV7"/>
+                            <constraint firstAttribute="centerX" secondItem="3PJ-aI-WTe" secondAttribute="centerX" id="E0X-KH-Rr6"/>
+                            <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="P35-iU-NV7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J00-84-G4C" secondAttribute="trailing" constant="-16" id="Vxh-tH-lc4"/>
+                            <constraint firstAttribute="centerY" secondItem="nXv-tM-0FL" secondAttribute="centerY" id="Yrc-QC-gOf"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="leading" secondItem="wCU-F2-9os" secondAttribute="leadingMargin" constant="-16" id="bFJ-cS-lue"/>
                             <constraint firstItem="TTs-tg-rRk" firstAttribute="top" secondItem="J00-84-G4C" secondAttribute="bottom" constant="8" symbolic="YES" id="bwl-R8-kcV"/>
+                            <constraint firstAttribute="centerX" secondItem="nXv-tM-0FL" secondAttribute="centerX" id="iLp-X9-qrC"/>
                             <constraint firstItem="J00-84-G4C" firstAttribute="top" secondItem="LaQ-Jl-96B" secondAttribute="bottom" id="pyJ-gl-dzS"/>
+                            <constraint firstAttribute="centerY" secondItem="3PJ-aI-WTe" secondAttribute="centerY" id="zYi-yk-esI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -395,6 +408,8 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicator" destination="3PJ-aI-WTe" id="0HC-gY-yrg"/>
+                        <outlet property="noResponseHintLabel" destination="nXv-tM-0FL" id="qFo-Ek-Sxg"/>
                         <outlet property="prettySegmentedControl" destination="BE4-iR-dYJ" id="jVz-vX-AOt"/>
                         <outlet property="responseTextView" destination="J00-84-G4C" id="aPw-un-qsK"/>
                     </connections>

@@ -29,19 +29,13 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var responseTextView: UITextView!
     
+    @IBOutlet weak var noResponseHintLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBAction func back(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func formatChanged(sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            currentPart = ResponsePart(rawValue: 0)
-//        case 1:
-//            prettyFormatted = false
-//        default:
-//            prettyFormatted = false
-//        }
         currentPart = ResponsePart(rawValue: sender.selectedSegmentIndex)
         
         refreshText()
@@ -50,8 +44,8 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         currentPart = .Body
-        
-        responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(0),CGFloat(16) , CGFloat(0), CGFloat(16))
+        responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(8),CGFloat(16) , CGFloat(8), CGFloat(16))
+        noResponseHintLabel.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,11 +69,15 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
             if let responseString = response?.body {
                 responseTextView.text = JSONStringify(responseString) ?? responseString
             } else {
-                responseTextView.text = "No Response"
+                noResponseHintLabel.hidden = false
             }
             
         case .Headers:
-            responseTextView.text = response?.getFormattedHeader() ?? "No Response"
+            if let header = response?.getFormattedHeader() {
+                responseTextView.text = header
+            } else {
+                noResponseHintLabel.hidden = false
+            }
         }
     }
     
@@ -105,5 +103,9 @@ extension ResponseViewController: ResponseUi {
     
     func setResponse(resp: APIResponse?) {
         response = resp
+    }
+    
+    func setLoadingIndicatorHidden(hidden: Bool) {
+        loadingIndicator.hidden = hidden
     }
 }
