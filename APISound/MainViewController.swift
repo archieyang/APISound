@@ -97,14 +97,14 @@ class MainViewController: UIViewController, MainUi {
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
-        showUrlParamDialog("Add parameters", message: "Add URL parameter", defaultUrlParams: nil){ (param) in
+        showUrlParamDialog("Parameters", message: "Add URL Parameter", defaultUrlParams: nil) { (param) in
             self.callbacks!.addRequestParam(param)
             self.urlParamsTableView.reloadData()
         }
     }
     
     @IBAction func addHeader(sender: UIButton) {
-        showUrlParamDialog("Add Headers", message: "Add Header field", defaultUrlParams: nil){ (param) in
+        showUrlParamDialog("Headers", message: "Add Header Field", defaultUrlParams: nil) { (param) in
             self.callbacks!.addHeaderParam(param)
             self.urlParamsTableView.reloadData()
         }
@@ -131,8 +131,6 @@ class MainViewController: UIViewController, MainUi {
             actionCallback(UrlParam(k: keyTextField.text, v: valueTextField.text))
         }
         
-        okAction.accessibilityLabel = "OK"
-        
         if let param = defaultUrlParams {
             okAction.enabled = true
         } else {
@@ -140,18 +138,16 @@ class MainViewController: UIViewController, MainUi {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        cancelAction.accessibilityLabel = "Add URL Params Cancel"
         
         var isKeyEmpty = true
         var isValueEmpty = true
         
         paramOperateController.addTextFieldWithConfigurationHandler { (keyTextField) in
-            keyTextField.accessibilityLabel = "URL param key"
             
             if let param = defaultUrlParams {
                 keyTextField.text = param.key
             } else {
-                keyTextField.placeholder = "key"
+                keyTextField.placeholder = "Key"
             }
             
             isKeyEmpty = keyTextField.text.isEmpty
@@ -163,12 +159,11 @@ class MainViewController: UIViewController, MainUi {
         }
         
         paramOperateController.addTextFieldWithConfigurationHandler { (valueTextField) in
-            valueTextField.accessibilityLabel = "URL param value"
             
             if let param = defaultUrlParams {
                 valueTextField.text = param.value
             } else {
-                valueTextField.placeholder = "value"
+                valueTextField.placeholder = "Value"
             }
             
             isValueEmpty = valueTextField.text.isEmpty

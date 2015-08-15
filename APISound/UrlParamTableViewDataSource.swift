@@ -41,7 +41,7 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
         if section == Section.Header.rawValue {
             return "Headers"
         } else {
-            return "Url Parameters"
+            return "URL Parameters"
         }
     }
     
@@ -54,9 +54,6 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
             cell.urlParam = mainViewController.apiRequest!.urlParamList[indexPath.row]
         }
         
-        cell.accessibilityLabel = "URL Param \(indexPath.row)"
-        cell.paramKeyLabel.accessibilityLabel = "URL Param Key \(indexPath.row)"
-        cell.paramValueLabel.accessibilityLabel = "URL Param Value \(indexPath.row)"
         return cell
     }
     
