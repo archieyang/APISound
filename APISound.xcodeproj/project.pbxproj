@@ -166,6 +166,7 @@
 		2165F3CA1B7743A9007C4702 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				21E3180F1B75D53800B27C9B /* Ui */,
 				213DBBFE1B11E90100773D1F /* SlideMenuController.swift */,
 				2165F3CB1B7743C9007C4702 /* Main */,
 				2163DD591B2915870017AEEE /* ResponseViewController.swift */,
@@ -187,13 +188,6 @@
 				21663B281B13FB4B002CD59A /* UrlParamCell.swift */,
 			);
 			name = Main;
-			sourceTree = "<group>";
-		};
-		216B005B1B228015005C974F /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MainViewController;
 			sourceTree = "<group>";
 		};
 		21706E521B3398F40079880A /* Model */ = {
@@ -242,17 +236,15 @@
 		21E21DBF1B1013AB003D00B4 /* APISound */ = {
 			isa = PBXGroup;
 			children = (
-				2165F3CA1B7743A9007C4702 /* View */,
-				21E318101B75D54600B27C9B /* Presenter */,
-				21E3180F1B75D53800B27C9B /* Ui */,
 				21E21DC91B1013AB003D00B4 /* Main.storyboard */,
+				21E318101B75D54600B27C9B /* Presenter */,
+				21706E521B3398F40079880A /* Model */,
+				2165F3CA1B7743A9007C4702 /* View */,
 				21E21DC21B1013AB003D00B4 /* AppDelegate.swift */,
 				21E21DC41B1013AB003D00B4 /* APISound.xcdatamodeld */,
-				21706E521B3398F40079880A /* Model */,
-				216B005B1B228015005C974F /* MainViewController */,
 				21E21DCE1B1013AB003D00B4 /* LaunchScreen.xib */,
-				21827E4E1B17EA0900C6676A /* HttpFetcher */,
 				21E21DCC1B1013AB003D00B4 /* Images.xcassets */,
+				21827E4E1B17EA0900C6676A /* HttpFetcher */,
 				21E21DC01B1013AB003D00B4 /* Supporting Files */,
 			);
 			path = APISound;

@@ -15,18 +15,18 @@ public class HttpFetcher {
     func execute(request: APIRequest, callback: (APIResponse?) -> Void) {
         var params = [String: AnyObject]()
         
-        for urlParam in request.urlParamList {
+        for urlParam in request.mUrlParamList {
             params[urlParam.key] = urlParam.value
             println(urlParam.key + urlParam.value)
         }
         
         var headers = [String : String]()
         
-        for headerItem in request.headerList {
+        for headerItem in request.mHeaderList {
             headers[headerItem.key] = headerItem.value
         }
 
-        Alamofire.request(request.method == HttpFetcher.METHODS[0] ? .GET : .POST, request.url, parameters: params, headers: headers).responseString {
+        Alamofire.request(request.mMethod == HttpFetcher.METHODS[0] ? .GET : .POST, request.mUrl, parameters: params, headers: headers).responseString {
             (_, response, string, _) in
 
             callback(APIResponse(response: response, body: string))

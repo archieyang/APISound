@@ -9,26 +9,26 @@
 import Foundation
 
 class ResponsePresenter: BasePresenter {
-    var responseUi: ResponseUi?
-    var request: APIRequest
+    var mResponseUi: ResponseUi?
+    var mRequest: APIRequest
     
     init(apiRequest: APIRequest) {
-        request = apiRequest
+        mRequest = apiRequest
     }
     
     override var mUi: BaseUi! {
         didSet {
             if let ui = mUi as? ResponseUi {
-                responseUi = ui
+                mResponseUi = ui
             }
         }
     }
     
     override func populateUi() {
-        self.responseUi?.setLoadingIndicatorHidden(false)
-        HttpFetcher().execute(request) { response in
-            self.responseUi?.setLoadingIndicatorHidden(true)
-            self.responseUi?.setResponse(response)
+        self.mResponseUi?.setLoadingIndicatorHidden(false)
+        HttpFetcher().execute(mRequest) { response in
+            self.mResponseUi?.setLoadingIndicatorHidden(true)
+            self.mResponseUi?.setResponse(response)
         }
     }
     

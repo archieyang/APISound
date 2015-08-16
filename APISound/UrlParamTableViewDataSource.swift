@@ -26,9 +26,9 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == Section.Header.rawValue {
-            return mainViewController.apiRequest!.headerList.count
+            return mainViewController.apiRequest!.mHeaderList.count
         } else {
-            return mainViewController.apiRequest!.urlParamList.count
+            return mainViewController.apiRequest!.mUrlParamList.count
         }
         
     }
@@ -49,9 +49,9 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("urlParamCell", forIndexPath: indexPath) as! UrlParamCell
         
         if indexPath.section == Section.Header.rawValue {
-            cell.urlParam = mainViewController.apiRequest!.headerList[indexPath.row]
+            cell.urlParam = mainViewController.apiRequest!.mHeaderList[indexPath.row]
         } else {
-            cell.urlParam = mainViewController.apiRequest!.urlParamList[indexPath.row]
+            cell.urlParam = mainViewController.apiRequest!.mUrlParamList[indexPath.row]
         }
         
         return cell
@@ -65,9 +65,9 @@ class UrlParamTableViewDataSource: NSObject, UITableViewDataSource {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if indexPath.section == Section.Header.rawValue {
-                mainViewController.apiRequest!.headerList.removeAtIndex(indexPath.row)
+                mainViewController.apiRequest!.mHeaderList.removeAtIndex(indexPath.row)
             } else {
-                mainViewController.apiRequest!.urlParamList.removeAtIndex(indexPath.row)
+                mainViewController.apiRequest!.mUrlParamList.removeAtIndex(indexPath.row)
             }
             
             mainViewController.urlParamsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)

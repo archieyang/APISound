@@ -10,14 +10,14 @@ import Foundation
 
 class MainPresenter: BasePresenter {
     let METHODS = HttpFetcher.METHODS
-    var apiRequest: APIRequest?
+    var mApiRequest: APIRequest?
     
-    var mainUi: MainUi?
+    var mMainUi: MainUi?
     
     override var mUi: BaseUi! {
         didSet {
             if let ui = mUi as? MainUi {
-                mainUi = ui
+                mMainUi = ui
             }
         }
     }
@@ -27,14 +27,14 @@ class MainPresenter: BasePresenter {
     }
     
     override func populateUi() {
-        if let request = apiRequest {
+        if let request = mApiRequest {
             
         } else {
-            apiRequest = APIRequest(method: METHODS[0], url: "")
+            mApiRequest = APIRequest(method: METHODS[0], url: "")
         }
         
-        if let request = apiRequest {
-            mainUi?.setCurrentItem(apiRequest!)
+        if let request = mApiRequest {
+            mMainUi?.setCurrentItem(mApiRequest!)
         }
         
     }
@@ -44,19 +44,19 @@ class MainPresenter: BasePresenter {
 extension MainPresenter: MainUiCallbacks {
 
     func createNewRequest() -> APIRequest {
-        apiRequest = APIRequest(method: METHODS[0], url: "")
-        return apiRequest!
+        mApiRequest = APIRequest(method: METHODS[0], url: "")
+        return mApiRequest!
     }
     
     func addRequestParam(param: UrlParam) -> Void {
-        if let request = apiRequest {
-            request.urlParamList.append(param)
+        if let request = mApiRequest {
+            request.mUrlParamList.append(param)
         }
     }
     
     func addHeaderParam(param: UrlParam) {
-        if let request = apiRequest {
-            request.headerList.append(param)
+        if let request = mApiRequest {
+            request.mHeaderList.append(param)
         }
     }
     
@@ -65,23 +65,23 @@ extension MainPresenter: MainUiCallbacks {
             return nil
         }
         
-        if index >= apiRequest!.urlParamList.count {
+        if index >= mApiRequest!.mUrlParamList.count {
             return nil
         }
         
-        return apiRequest!.urlParamList[index]
+        return mApiRequest!.mUrlParamList[index]
     }
     
     func saveCurrentRequest() -> APIRequest? {
-        if let request = apiRequest, ui = mainUi{
+        if let request = mApiRequest, ui = mMainUi{
             let url = ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             if url.hasPrefix("http://") || url.hasPrefix("https://") {
-                request.url = url
+                request.mUrl = url
             } else {
-                request.url = "http://" + url
+                request.mUrl = "http://" + url
             }
-            request.method = mainUi!.getMethodString()
-            request.lastRequestTime = NSDate()
+            request.mMethod = mMainUi!.getMethodString()
+            request.mLastRequestTime = NSDate()
             request.save()
 
             return request
@@ -92,7 +92,7 @@ extension MainPresenter: MainUiCallbacks {
     }
     
     func isCurrentRequestValid() -> (valid: Bool, warningText: String?) {
-        if let ui = mainUi {
+        if let ui = mMainUi {
             if ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
                 return (false, "URL should not be empty")
             } else {

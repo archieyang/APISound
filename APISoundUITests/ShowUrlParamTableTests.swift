@@ -10,24 +10,24 @@ import Foundation
 import XCTest
 
 class ShowUrlParamTableTest: XCTestCase {
-    func testShowUrlParamTable() {
-        tapAddUrlParamButton()
-        assertAddUrlParamsDialogOnView()
-        
-        fillKeyTextField()
-        tapDoneButton()
-        assertAddUrlParamsDialogOnView()
-        
-        fillKeyAndValueTextField()
-        tapDoneButton()
-        assertAddUrlParamsDialogOffView()
-        
-        assertUrlParamInTableView()
-        
-        
-        tapCellOne()
-        assertEditUrlParamsDialogOnView()
-    }
+//    func testShowUrlParamTable() {
+//        tapAddUrlParamButton()
+//        assertAddUrlParamsDialogOnView()
+//        
+//        fillKeyTextField()
+//        tapDoneButton()
+//        assertAddUrlParamsDialogOnView()
+//        
+//        fillKeyAndValueTextField()
+//        tapDoneButton()
+//        assertAddUrlParamsDialogOffView()
+//        
+//        assertUrlParamInTableView()
+//        
+//        
+//        tapCellOne()
+//        assertEditUrlParamsDialogOnView()
+//    }
     
 }
 

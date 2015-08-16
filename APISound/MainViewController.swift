@@ -10,8 +10,8 @@ import UIKit
 import JLToast
 
 class MainViewController: UIViewController, MainUi {
-    var mainPresenter = MainPresenter()
-    var callbacks: MainUiCallbacks?
+    var mMainPresenter = MainPresenter()
+    var mCallbacks: MainUiCallbacks?
     
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var methodField: UITextField!
@@ -23,12 +23,12 @@ class MainViewController: UIViewController, MainUi {
     var apiRequest: APIRequest? {
         didSet {
             if let request = apiRequest {
-                urlField.text = request.url
-                methodField.text = request.method
+                urlField.text = request.mUrl
+                methodField.text = request.mMethod
                 self.urlParamsTableView.reloadData()
                 
-                if request !== mainPresenter.apiRequest! {
-                    mainPresenter.apiRequest = request
+                if request !== mMainPresenter.mApiRequest! {
+                    mMainPresenter.mApiRequest = request
                 }
             }
         }
@@ -68,7 +68,7 @@ class MainViewController: UIViewController, MainUi {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        mainPresenter.attachUi(self)
+        mMainPresenter.attachUi(self)
         
         urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
         urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
@@ -94,26 +94,26 @@ class MainViewController: UIViewController, MainUi {
     }
     
     @IBAction func createNewRequest(sender: UIBarButtonItem) {
-        self.apiRequest = callbacks!.createNewRequest()
+        self.apiRequest = mCallbacks!.createNewRequest()
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
         showUrlParamDialog("Parameters", message: "Add URL Parameter", defaultUrlParams: nil) { (param) in
-            self.callbacks!.addRequestParam(param)
+            self.mCallbacks!.addRequestParam(param)
             self.urlParamsTableView.reloadData()
         }
     }
     
     @IBAction func addHeader(sender: UIButton) {
         showUrlParamDialog("Headers", message: "Add Header Field", defaultUrlParams: nil) { (param) in
-            self.callbacks!.addHeaderParam(param)
+            self.mCallbacks!.addHeaderParam(param)
             self.urlParamsTableView.reloadData()
         }
         
     }
     @IBAction func sendRequest(sender: UIButton) {
-        if let cb = callbacks {
-            let (valid, warningText) = cb.isCurrentRequestValid()
+        if let callbacks = mCallbacks {
+            let (valid, warningText) = callbacks.isCurrentRequestValid()
             
             if valid {
                 performSegueWithIdentifier("showResponse", sender: sender)
@@ -204,7 +204,7 @@ class MainViewController: UIViewController, MainUi {
     
     func setUiCallbacks(c: BaseUiCallbacks) {
         if let mainUiCallacks = c as? MainUiCallbacks {
-            callbacks = mainUiCallacks
+            mCallbacks = mainUiCallacks
         }
 
     }
@@ -221,8 +221,8 @@ class MainViewController: UIViewController, MainUi {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showResponse" {
             if let responseViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as? ResponseViewController {
-                callbacks?.saveCurrentRequest()
-                responseViewController.request = apiRequest!
+                mCallbacks?.saveCurrentRequest()
+                responseViewController.mRequest = apiRequest!
             }
         }
     }

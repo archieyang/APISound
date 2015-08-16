@@ -16,8 +16,8 @@ class UrlParamTableViewDelegate: NSObject, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        mainViewController.showUrlParamDialog("Edit", message: "Edit Key and Value", defaultUrlParams: mainViewController.callbacks!.getUrlParam(atIndex: indexPath.row)) { [unowned self] (newUrlParam) in
-            self.mainViewController.apiRequest!.urlParamList[indexPath.row] = newUrlParam
+        mainViewController.showUrlParamDialog("Edit", message: "Edit Key and Value", defaultUrlParams: mainViewController.mCallbacks!.getUrlParam(atIndex: indexPath.row)) { [unowned self] (newUrlParam) in
+            self.mainViewController.apiRequest!.mUrlParamList[indexPath.row] = newUrlParam
             self.mainViewController.urlParamsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }

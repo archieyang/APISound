@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 
 class APIRequestManager {
-    static let sharedInstance = APIRequestManager()
+    static let mSharedInstance = APIRequestManager()
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     

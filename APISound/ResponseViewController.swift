@@ -13,17 +13,17 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
         case Body = 0, Headers
     }
     
-    var currentPart: ResponsePart!
+    var mCurrentPart: ResponsePart!
     
-    var response: APIResponse? {
+    var mResponse: APIResponse? {
         didSet {
             refreshText()
         }
     }
     
-    var request: APIRequest!
+    var mRequest: APIRequest!
     
-    var responsePresenter: ResponsePresenter!
+    var mResponsePresenter: ResponsePresenter!
     
     @IBOutlet weak var prettySegmentedControl: UISegmentedControl!
     
@@ -39,27 +39,26 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func formatChanged(sender: UISegmentedControl) {
-        currentPart = ResponsePart(rawValue: sender.selectedSegmentIndex)
+        mCurrentPart = ResponsePart(rawValue: sender.selectedSegmentIndex)
         
         refreshText()
     }
 
     
     override func viewDidLoad() {
-        currentPart = .Body
+        mCurrentPart = .Body
         responseTextView.textContainerInset = UIEdgeInsetsMake(CGFloat(8),CGFloat(16) , CGFloat(8), CGFloat(16))
         noResponseHintLabel.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
-        responsePresenter = ResponsePresenter(apiRequest: request)
-        responsePresenter.attachUi(self)
+        mResponsePresenter = ResponsePresenter(apiRequest: mRequest)
+        mResponsePresenter.attachUi(self)
     }
     
     //MARK: UIBottomBarDelegate
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        currentPart = ResponsePart(rawValue: item.tag)
-        println("currentPart = \(currentPart.rawValue)")
+        mCurrentPart = ResponsePart(rawValue: item.tag)
         refreshText()
     }
     
@@ -67,16 +66,16 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
     
     private func refreshText() -> Void {
         
-        switch currentPart! {
+        switch mCurrentPart! {
         case .Body:
-            if let responseString = response?.body {
+            if let responseString = mResponse?.mBody {
                 responseTextView.text = JSONStringify(responseString) ?? responseString
             } else {
                 noResponseHintLabel.hidden = false
             }
             
         case .Headers:
-            if let header = response?.getFormattedHeader() {
+            if let header = mResponse?.getFormattedHeader() {
                 responseTextView.text = header
             } else {
                 noResponseHintLabel.hidden = false
@@ -105,8 +104,8 @@ extension ResponseViewController: ResponseUi {
     }
     
     func setResponse(resp: APIResponse?) {
-        response = resp
-        if let status = response?.getStatusLine() {
+        mResponse = resp
+        if let status = mResponse?.getStatusLine() {
             responseStatusLine.text = status
         } else {
             responseStatusLineView.hidden = true

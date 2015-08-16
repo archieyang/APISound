@@ -13,37 +13,37 @@ import CoreData
 public class APIRequest {
     private var requestDataItem: RequestDataItem?
     
-    var url: String
-    var method: String
-    var urlParamList: [UrlParam]
-    var headerList:[UrlParam]
-    var lastRequestTime: NSDate!
+    var mUrl: String
+    var mMethod: String
+    var mUrlParamList: [UrlParam]
+    var mHeaderList:[UrlParam]
+    var mLastRequestTime: NSDate!
     
     public init(method: String, url: String, urlParamList: [UrlParam], headerList: [UrlParam]) {
-        self.url = url
-        self.method = method
-        self.urlParamList = urlParamList
-        self.headerList = headerList
+        self.mUrl = url
+        self.mMethod = method
+        self.mUrlParamList = urlParamList
+        self.mHeaderList = headerList
     }
     
     public init(method: String, url: String) {
-        self.url = url
-        self.method = method
-        self.urlParamList = [UrlParam]()
-        self.headerList = [UrlParam]()
+        self.mUrl = url
+        self.mMethod = method
+        self.mUrlParamList = [UrlParam]()
+        self.mHeaderList = [UrlParam]()
     }
     
     init(requestDataItem: RequestDataItem) {
         self.requestDataItem = requestDataItem
         
-        url = requestDataItem.url
-        method = requestDataItem.method
-        urlParamList = [UrlParam]()
-        headerList = [UrlParam]()
-        lastRequestTime = requestDataItem.lastRequestTime
+        mUrl = requestDataItem.url
+        mMethod = requestDataItem.method
+        mUrlParamList = [UrlParam]()
+        mHeaderList = [UrlParam]()
+        mLastRequestTime = requestDataItem.lastRequestTime
         
         for param in requestDataItem.params.array as! [UrlParamItem] {
-            urlParamList.append(UrlParam(k: param.key, v: param.value))
+            mUrlParamList.append(UrlParam(k: param.key, v: param.value))
         }
     }
     
@@ -60,12 +60,12 @@ public class APIRequest {
 
         
         if let item = requestDataItem {
-            item.method = method
-            item.url = url
-            item.lastRequestTime = lastRequestTime
+            item.method = mMethod
+            item.url = mUrl
+            item.lastRequestTime = mLastRequestTime
             
             var paramSet = [AnyObject]()
-            for item in urlParamList {
+            for item in mUrlParamList {
                 let newUrlParam = NSEntityDescription.insertNewObjectForEntityForName("UrlParamItem", inManagedObjectContext: managedObjectContext!) as! UrlParamItem
                 newUrlParam.key = item.key
                 newUrlParam.value = item.value

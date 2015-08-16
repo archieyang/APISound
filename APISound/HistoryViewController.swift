@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource, UITableViewDelegate {
-    var historyPresenter = HistoryPresenter()
-    var historyGroups = [HistorySectionItem]() {
+    var mHistoryPresenter = HistoryPresenter()
+    var mHistoryGroups = [HistorySectionItem]() {
         didSet {
             self.historyTableView.reloadData()
         }
@@ -36,7 +36,7 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     }
     
     override func viewWillAppear(animated: Bool) {
-        historyPresenter.attachUi(self)
+        mHistoryPresenter.attachUi(self)
     }
     
     //MARK: Table View Data Source
@@ -47,23 +47,23 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
             noDataHintLabel.hidden = true
         }
         
-        return historyGroups.count
+        return mHistoryGroups.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = historyGroups[section].mDate
+        let date = mHistoryGroups[section].mDate
         
         return date
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("historyViewCell", forIndexPath: indexPath) as! HistoryViewCell
-        cell.urlLabel.text = requestList[indexPath.row].url
+        cell.urlLabel.text = requestList[indexPath.row].mUrl
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return historyGroups[section].mSize
+        return mHistoryGroups[section].mSize
     }
     
     //MARK: Table View Delegate
@@ -78,7 +78,7 @@ class HistoryViewController: UIViewController, HistoryUi, UITableViewDataSource,
     }
     
     func setGroups(groups: [HistorySectionItem]) -> Void {
-        historyGroups = groups
+        mHistoryGroups = groups
     }
     
     func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {

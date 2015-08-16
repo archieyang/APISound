@@ -10,18 +10,18 @@ import Foundation
 import Alamofire
 
 struct APIResponse {
-    let response: NSHTTPURLResponse?
-    let body: String?
-    private let statusCode: Int?
+    let mResponse: NSHTTPURLResponse?
+    let mBody: String?
+    private let mStatusCode: Int?
     
     init(response: NSHTTPURLResponse?, body: String?) {
-        self.response = response
-        self.body = body
-        self.statusCode = response?.statusCode
+        self.mResponse = response
+        self.mBody = body
+        self.mStatusCode = response?.statusCode
     }
     
     func getStatusLine() -> String? {
-        if let status = statusCode {
+        if let status = mStatusCode {
             return "\(status) \(NSHTTPURLResponse.localizedStringForStatusCode(status).capitalizedString)"
         } else {
             return nil
@@ -30,7 +30,7 @@ struct APIResponse {
     
     func getFormattedHeader() -> String? {
         
-        if let res = response {
+        if let res = mResponse {
             var resString = ""
             for (key, value) in res.allHeaderFields {
                 resString += "\(key): \(value)\n"

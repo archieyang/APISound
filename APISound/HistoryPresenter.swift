@@ -11,7 +11,7 @@ import Foundation
 class HistoryPresenter: BasePresenter {
 
     override func populateUi() -> Void {
-        APIRequestManager.sharedInstance.fetchAll { apiRequests in
+        APIRequestManager.mSharedInstance.fetchAll { apiRequests in
             if let ui = self.mUi as? HistoryUi {
                 ui.setGroups(self.groupRequests(apiRequests))
                 ui.setItems(apiRequests)
@@ -35,14 +35,14 @@ class HistoryPresenter: BasePresenter {
             let request = apiRequests[index]
             
             if index == 0 {
-                currentDate = request.lastRequestTime
+                currentDate = request.mLastRequestTime
                 currentSize = 1
-            } else if request.lastRequestTime.inSameDay(currentDate) {
+            } else if request.mLastRequestTime.inSameDay(currentDate) {
                 currentSize += 1
             } else {
                 groups.append(HistorySectionItem(size: currentSize, date: formatDate(currentDate)))
                 currentSize = 1
-                currentDate = request.lastRequestTime
+                currentDate = request.mLastRequestTime
             }
             
             if index == apiRequests.count - 1 {
