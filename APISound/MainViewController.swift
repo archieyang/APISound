@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JLToast
 
 class MainViewController: UIViewController, MainUi {
     var mainPresenter = MainPresenter()
@@ -107,6 +108,21 @@ class MainViewController: UIViewController, MainUi {
         showUrlParamDialog("Headers", message: "Add Header Field", defaultUrlParams: nil) { (param) in
             self.callbacks!.addHeaderParam(param)
             self.urlParamsTableView.reloadData()
+        }
+        
+    }
+    @IBAction func sendRequest(sender: UIButton) {
+        if let cb = callbacks {
+            let (valid, warningText) = cb.isCurrentRequestValid()
+            
+            if valid {
+                performSegueWithIdentifier("showResponse", sender: sender)
+            } else {
+                if let text = warningText {
+                    JLToast.makeText(text).show()
+                }
+            }
+            
         }
         
     }

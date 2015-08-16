@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'APISound' do
     pod 'Alamofire', '~> 1.3'
+    pod 'JLToast', '~> 1.2.5'
 end
 
 target 'APISoundTests' do

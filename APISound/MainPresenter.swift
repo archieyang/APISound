@@ -90,6 +90,18 @@ extension MainPresenter: MainUiCallbacks {
         }
 
     }
+    
+    func isCurrentRequestValid() -> (valid: Bool, warningText: String?) {
+        if let ui = mainUi {
+            if ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
+                return (false, "URL should not be empty")
+            } else {
+                return (true, nil)
+            }
+        } else {
+            return (false, nil)
+        }
+    }
 }
 
 protocol MainUiCallbacks: BaseUiCallbacks {
@@ -98,4 +110,5 @@ protocol MainUiCallbacks: BaseUiCallbacks {
     func addHeaderParam(param: UrlParam) -> Void
     func getUrlParam(atIndex index: Int) -> UrlParam?
     func saveCurrentRequest() -> APIRequest?
+    func isCurrentRequestValid() -> (valid: Bool, warningText: String?)
 }

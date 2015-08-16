@@ -71,7 +71,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <segue destination="8vU-R6-1F2" kind="showDetail" identifier="showResponse" id="mpK-4q-cYQ"/>
+                                                <action selector="sendRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C0A-Bw-Xj3"/>
                                             </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ZX-JN-vmN">
@@ -240,6 +240,7 @@
                         <outlet property="methodPickerView" destination="pc8-ey-Fgz" id="zcp-vl-FQO"/>
                         <outlet property="urlField" destination="YLr-hD-F5d" id="eKF-Xy-6TR"/>
                         <outlet property="urlParamsTableView" destination="Aqe-ea-Se5" id="cuT-ZC-U4K"/>
+                        <segue destination="8vU-R6-1F2" kind="showDetail" identifier="showResponse" id="0zk-Pa-fBV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
