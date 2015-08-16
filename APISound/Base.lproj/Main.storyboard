@@ -196,23 +196,27 @@
                                 </prototypes>
                             </tableView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-ey-Fgz">
-                                <rect key="frame" x="140" y="366" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="366" width="600" height="162"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="pc8-ey-Fgz" secondAttribute="centerX" id="HlX-GE-nRX"/>
+                            <constraint firstItem="pc8-ey-Fgz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Q9Z-iC-FfV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pc8-ey-Fgz" secondAttribute="bottom" constant="8" symbolic="YES" id="S3W-QX-DYf"/>
                             <constraint firstItem="Aqe-ea-Se5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="WTG-vI-9c4"/>
                             <constraint firstItem="Aqe-ea-Se5" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="c1o-SE-m3T"/>
                             <constraint firstItem="Aqe-ea-Se5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="cjH-QW-SaV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Aqe-ea-Se5" secondAttribute="bottom" constant="8" symbolic="YES" id="hWS-TZ-rQC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pc8-ey-Fgz" secondAttribute="trailing" constant="-16" id="jVZ-wZ-DcA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Aqe-ea-Se5" secondAttribute="bottom" constant="8" symbolic="YES" id="rZC-jX-NgG"/>
                             <constraint firstItem="Aqe-ea-Se5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zGy-Qg-AqH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="WTG-vI-9c4"/>
+                                <exclude reference="HlX-GE-nRX"/>
                                 <exclude reference="rZC-jX-NgG"/>
                             </mask>
                         </variation>
