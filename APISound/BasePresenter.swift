@@ -8,12 +8,12 @@
 
 import Foundation
 
-class BasePresenter {
+public class BasePresenter {
     typealias U = BaseUi
     
     var mUi : U!
     
-    init() {
+    public init() {
         
     }
     
@@ -33,6 +33,6 @@ class BasePresenter {
     
 }
 
-protocol BaseUiCallbacks {
+public protocol BaseUiCallbacks {
     
 }

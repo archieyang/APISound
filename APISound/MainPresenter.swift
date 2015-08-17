@@ -8,8 +8,8 @@
 
 import Foundation
 
-class MainPresenter: BasePresenter {
-    let METHODS = HttpFetcher.METHODS
+public class MainPresenter: BasePresenter {
+
     var mApiRequest: APIRequest?
     
     var mMainUi: MainUi?
@@ -30,7 +30,7 @@ class MainPresenter: BasePresenter {
         if let request = mApiRequest {
             
         } else {
-            mApiRequest = APIRequest(method: METHODS[0], url: "")
+            mApiRequest = APIRequest(method: HttpFetcher.METHODS[0], url: "")
         }
         
         if let request = mApiRequest {
@@ -43,24 +43,24 @@ class MainPresenter: BasePresenter {
 
 extension MainPresenter: MainUiCallbacks {
 
-    func createNewRequest() -> APIRequest {
-        mApiRequest = APIRequest(method: METHODS[0], url: "")
+    public func createNewRequest(_ request: APIRequest = APIRequest(method: HttpFetcher.METHODS[0], url: "")) -> APIRequest {
+        mApiRequest = request
         return mApiRequest!
     }
     
-    func addRequestParam(param: UrlParam) -> Void {
+    public func addRequestParam(param: UrlParam) -> Void {
         if let request = mApiRequest {
             request.mUrlParamList.append(param)
         }
     }
     
-    func addHeaderParam(param: UrlParam) {
+    public func addHeaderParam(param: UrlParam) {
         if let request = mApiRequest {
             request.mHeaderList.append(param)
         }
     }
     
-    func getUrlParam(atIndex index: Int) -> UrlParam? {
+    public func getUrlParam(atIndex index: Int) -> UrlParam? {
         if index < 0 {
             return nil
         }
@@ -72,7 +72,7 @@ extension MainPresenter: MainUiCallbacks {
         return mApiRequest!.mUrlParamList[index]
     }
     
-    func saveCurrentRequest() -> APIRequest? {
+    public func saveCurrentRequest() -> APIRequest? {
         if let request = mApiRequest, ui = mMainUi{
             let url = ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             if url.hasPrefix("http://") || url.hasPrefix("https://") {
@@ -91,7 +91,7 @@ extension MainPresenter: MainUiCallbacks {
 
     }
     
-    func isCurrentRequestValid() -> (valid: Bool, warningText: String?) {
+    public func isCurrentRequestValid() -> (valid: Bool, warningText: String?) {
         if let ui = mMainUi {
             if ui.getUrlString().stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
                 return (false, "URL should not be empty")
@@ -104,8 +104,8 @@ extension MainPresenter: MainUiCallbacks {
     }
 }
 
-protocol MainUiCallbacks: BaseUiCallbacks {
-    func createNewRequest() -> APIRequest
+public protocol MainUiCallbacks: BaseUiCallbacks {
+    func createNewRequest(apiRequest: APIRequest) -> APIRequest
     func addRequestParam(param: UrlParam) -> Void
     func addHeaderParam(param: UrlParam) -> Void
     func getUrlParam(atIndex index: Int) -> UrlParam?

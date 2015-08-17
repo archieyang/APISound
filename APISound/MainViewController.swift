@@ -94,7 +94,7 @@ class MainViewController: UIViewController, MainUi {
     }
     
     @IBAction func createNewRequest(sender: UIBarButtonItem) {
-        self.apiRequest = mCallbacks!.createNewRequest()
+        self.apiRequest = mMainPresenter.createNewRequest()
     }
     
     @IBAction func addUrlParamPair(sender: UIButton) {
