@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UrlParam {
+public struct UrlParam: Equatable {
     public init(k: String, v: String){
         key = k
         value = v
@@ -16,3 +16,8 @@ public struct UrlParam {
     public let key: String
     public let value: String
 }
+
+public func ==(lhs: UrlParam, rhs: UrlParam) -> Bool {
+    return lhs.key == rhs.key && lhs.value == rhs.value
+}
+

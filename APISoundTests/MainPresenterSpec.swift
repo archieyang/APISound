@@ -36,7 +36,14 @@ class MainPresenterSpec: QuickSpec {
         
     }
     override func spec() {
-        var mainPresenter = MainPresenter()
+        var mainPresenter: MainPresenter!
+        var request: APIRequest!
+        
+        beforeEach {
+            mainPresenter = MainPresenter()
+            request = mainPresenter.createNewRequest(APIRequest(method: "PGET", url: "http://codethink.me"))
+            
+        }
         
         describe(".createNewRequest") {
             context("Request created successfully") {
@@ -50,6 +57,18 @@ class MainPresenterSpec: QuickSpec {
                 }
             }
             
+        }
+        
+        describe(".addHeaderParam") {
+            context("Header added successfully") {
+                it("receives the header passed  in") {
+                    let param = UrlParam(k: "header_key", v: "header_value")
+                    mainPresenter.addHeaderParam(param)
+                    
+                    expect(request.mHeaderList.count).to(equal(1))
+                    expect(request.mHeaderList[0]).to(equal(param))
+                }
+            }
         }
     }
 }

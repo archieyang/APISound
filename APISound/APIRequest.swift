@@ -13,11 +13,11 @@ import CoreData
 public class APIRequest {
     private var requestDataItem: RequestDataItem?
     
-    var mUrl: String
-    var mMethod: String
-    var mUrlParamList: [UrlParam]
-    var mHeaderList:[UrlParam]
-    var mLastRequestTime: NSDate!
+    public var mUrl: String
+    public var mMethod: String
+    public var mUrlParamList: [UrlParam]
+    public var mHeaderList:[UrlParam]
+    public var mLastRequestTime: NSDate!
     
     public init(method: String, url: String, urlParamList: [UrlParam], headerList: [UrlParam]) {
         self.mUrl = url
