@@ -9,7 +9,7 @@
 import Foundation
 
 public class BasePresenter {
-    typealias U = BaseUi
+    public typealias U = BaseUi
     
     var mUi : U!
     
@@ -17,7 +17,7 @@ public class BasePresenter {
         
     }
     
-    func attachUi(ui: U) -> Void {
+    public func attachUi(ui: U) -> Void {
         mUi = ui
         populateUi()
         onAttachToUi()

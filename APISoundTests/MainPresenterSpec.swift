@@ -12,35 +12,13 @@ import Nimble
 import APISound
 
 class MainPresenterSpec: QuickSpec {
-    class MockMainUi: MainUi {
-        var mApiRequest: APIRequest!
-        var mCallbacks: MainUiCallbacks!
-        
-        func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {
-            if let mainUiCallbacks = callbacks as? MainUiCallbacks {
-                mCallbacks = mainUiCallbacks
-            }
-        }
-        
-        func setCurrentItem(request: APIRequest) -> Void{
-            mApiRequest = request
-        }
-        
-        func getMethodString() -> String {
-            return "POST"
-        }
-        
-        func getUrlString() -> String {
-            return "http://hi"
-        }
-        
-    }
     override func spec() {
         var mainPresenter: MainPresenter!
         var request: APIRequest!
         
         beforeEach {
             mainPresenter = MainPresenter()
+            
             request = mainPresenter.createNewRequest(APIRequest(method: "PGET", url: "http://codethink.me"))
             
         }
@@ -61,7 +39,7 @@ class MainPresenterSpec: QuickSpec {
         
         describe(".addHeaderParam") {
             context("Header added successfully") {
-                it("receives the header passed  in") {
+                it("receives the header passed in") {
                     let param = UrlParam(k: "header_key", v: "header_value")
                     mainPresenter.addHeaderParam(param)
                     
@@ -69,6 +47,88 @@ class MainPresenterSpec: QuickSpec {
                     expect(request.mHeaderList[0]).to(equal(param))
                 }
             }
+        }
+        
+        describe(".addRequestParam") {
+            context("Request parameter added successfully") {
+                it("receives the header passed in") {
+                    let param = UrlParam(k: "param_key", v: "param_value")
+                    mainPresenter.addRequestParam(param)
+                    
+                    expect(request.mUrlParamList.count).to(equal(1))
+                    expect(request.mUrlParamList[0]).to(equal(param))
+                    
+                }
+            }
+        }
+
+        describe(".saveCurrentRequest") {
+            var saveRequest: APIRequest!
+            
+            class MockMainUi: MainUi {
+                var mApiRequest: APIRequest!
+                var mCallbacks: MainUiCallbacks!
+                
+                let mMethod: String
+                let mUrl: String
+                
+                init(url: String, method: String) {
+                    mUrl = url
+                    mMethod = method
+                }
+                
+                func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {
+                    if let mainUiCallbacks = callbacks as? MainUiCallbacks {
+                        mCallbacks = mainUiCallbacks
+                    }
+                }
+                
+                func setCurrentItem(request: APIRequest) -> Void{
+                    mApiRequest = request
+                }
+                
+                func getMethodString() -> String {
+                    return mMethod
+                }
+                
+                func getUrlString() -> String {
+                    return mUrl
+                }
+                
+            }
+            
+            context("Normal case") {
+                it("saved successfully") {
+                    let ui = MockMainUi(url: "http://codethink.me", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    let savedRequest = mainPresenter.saveCurrentRequest()!
+                    
+                    expect(savedRequest.mMethod).to(equal(ui.getMethodString()))
+                    expect(savedRequest.mUrl).to(equal(ui.getUrlString()))
+                }
+            }
+            context("Request does not have scheme") {
+                it("adds 'http://' automatically") {
+                    let ui = MockMainUi(url: "codethink.me", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    let savedRequest = mainPresenter.saveCurrentRequest()!
+                    
+                    expect(request.mMethod).to(equal("GET"))
+                    expect(request.mUrl).to(equal("http://codethink.me"))
+                }
+            }
+            
+            context("Url has spaces") {
+                it("trim spaces") {
+                    let ui = MockMainUi(url: "  http://codethink.me  ", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    let savedRequest = mainPresenter.saveCurrentRequest()!
+                    
+                    expect(request.mMethod).to(equal("GET"))
+                    expect(request.mUrl).to(equal("http://codethink.me"))
+                }
+            }
+            
         }
     }
 }
