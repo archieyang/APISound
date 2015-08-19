@@ -16,6 +16,38 @@ class MainPresenterSpec: QuickSpec {
         var mainPresenter: MainPresenter!
         var request: APIRequest!
         
+        class MockMainUi: MainUi {
+            var mApiRequest: APIRequest!
+            var mCallbacks: MainUiCallbacks!
+            
+            let mMethod: String
+            let mUrl: String
+            
+            init(url: String, method: String) {
+                mUrl = url
+                mMethod = method
+            }
+            
+            func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {
+                if let mainUiCallbacks = callbacks as? MainUiCallbacks {
+                    mCallbacks = mainUiCallbacks
+                }
+            }
+            
+            func setCurrentItem(request: APIRequest) -> Void{
+                mApiRequest = request
+            }
+            
+            func getMethodString() -> String {
+                return mMethod
+            }
+            
+            func getUrlString() -> String {
+                return mUrl
+            }
+            
+        }
+        
         beforeEach {
             mainPresenter = MainPresenter()
             
@@ -63,39 +95,6 @@ class MainPresenterSpec: QuickSpec {
         }
 
         describe(".saveCurrentRequest") {
-            var saveRequest: APIRequest!
-            
-            class MockMainUi: MainUi {
-                var mApiRequest: APIRequest!
-                var mCallbacks: MainUiCallbacks!
-                
-                let mMethod: String
-                let mUrl: String
-                
-                init(url: String, method: String) {
-                    mUrl = url
-                    mMethod = method
-                }
-                
-                func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void {
-                    if let mainUiCallbacks = callbacks as? MainUiCallbacks {
-                        mCallbacks = mainUiCallbacks
-                    }
-                }
-                
-                func setCurrentItem(request: APIRequest) -> Void{
-                    mApiRequest = request
-                }
-                
-                func getMethodString() -> String {
-                    return mMethod
-                }
-                
-                func getUrlString() -> String {
-                    return mUrl
-                }
-                
-            }
             
             context("Normal case") {
                 it("saved successfully") {
@@ -118,7 +117,7 @@ class MainPresenterSpec: QuickSpec {
                 }
             }
             
-            context("Url has spaces") {
+            context("URL has spaces") {
                 it("trim spaces") {
                     let ui = MockMainUi(url: "  http://codethink.me  ", method: "GET")
                     mainPresenter.attachUi(ui)
@@ -129,6 +128,38 @@ class MainPresenterSpec: QuickSpec {
                 }
             }
             
+        }
+        
+        describe(".isCurrentRequestValid") {
+            context("Normal case") {
+                it("returns true") {
+                    let ui = MockMainUi(url: "http://codethink.me", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    
+                    expect(mainPresenter.isCurrentRequestValid().valid).to(beTrue())
+                    expect(mainPresenter.isCurrentRequestValid().warningText).to(beNil())
+                }
+            }
+            
+            context("Empty URL") {
+                it("returns false and error message") {
+                    let ui = MockMainUi(url: "", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    
+                    expect(mainPresenter.isCurrentRequestValid().valid).to(beFalse())
+                    expect(mainPresenter.isCurrentRequestValid().warningText!).to(equal("URL should not be empty"))
+                }
+            }
+            
+            context("Space in URL field") {
+                it("returns false and error message") {
+                    let ui = MockMainUi(url: "   ", method: "GET")
+                    mainPresenter.attachUi(ui)
+                    
+                    expect(mainPresenter.isCurrentRequestValid().valid).to(beFalse())
+                    expect(mainPresenter.isCurrentRequestValid().warningText!).to(equal("URL should not be empty"))
+                }
+            }
         }
     }
 }
