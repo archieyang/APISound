@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class APIRequestManager {
+public class APIRequestManager: RequestManager {
     static let mSharedInstance = APIRequestManager()
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -19,7 +19,7 @@ class APIRequestManager {
         
     }
     
-    internal func fetchAll(callback: ([APIRequest]) -> Void) -> Void {
+    public func fetchAll(callback: ([APIRequest]) -> Void) -> Void {
         
         var allRequests = [APIRequest]()
         
@@ -34,4 +34,8 @@ class APIRequestManager {
         callback(allRequests)
         
     }
+}
+
+public protocol RequestManager {
+    func fetchAll(callback: ([APIRequest]) -> Void) -> Void;
 }

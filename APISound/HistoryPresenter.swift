@@ -8,10 +8,15 @@
 
 import Foundation
 
-class HistoryPresenter: BasePresenter {
+public class HistoryPresenter: BasePresenter {
+    private let mRequestManager: RequestManager!
+    
+    public init(requestManager: RequestManager = APIRequestManager.mSharedInstance) {
+        mRequestManager = requestManager
+    }
 
     override func populateUi() -> Void {
-        APIRequestManager.mSharedInstance.fetchAll { apiRequests in
+        mRequestManager.fetchAll { apiRequests in
             if let ui = self.mUi as? HistoryUi {
                 ui.setGroups(self.groupRequests(apiRequests))
                 ui.setItems(apiRequests)
@@ -74,7 +79,7 @@ extension NSDate {
     }
 }
 
-struct HistorySectionItem {
+public struct HistorySectionItem {
     let mSize: Int
     let mDate: String
     

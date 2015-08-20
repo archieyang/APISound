@@ -7,7 +7,7 @@
 //
 
 import Foundation
-protocol HistoryUi: BaseUi {
+public protocol HistoryUi: BaseUi {
     func setItems(items: [APIRequest]) -> Void
     func setGroups(groupItems: [HistorySectionItem]) -> Void
 }

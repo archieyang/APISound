@@ -19,18 +19,20 @@ public class APIRequest {
     public var mHeaderList:[UrlParam]
     public var mLastRequestTime: NSDate!
     
-    public init(method: String, url: String, urlParamList: [UrlParam], headerList: [UrlParam]) {
+    public init(method: String, url: String, urlParamList: [UrlParam], headerList: [UrlParam], lastRequestTime: NSDate = NSDate()) {
         self.mUrl = url
         self.mMethod = method
         self.mUrlParamList = urlParamList
         self.mHeaderList = headerList
+        self.mLastRequestTime = lastRequestTime
     }
     
-    public init(method: String, url: String) {
+    public init(method: String, url: String, lastRequestTime: NSDate = NSDate()) {
         self.mUrl = url
         self.mMethod = method
         self.mUrlParamList = [UrlParam]()
         self.mHeaderList = [UrlParam]()
+        self.mLastRequestTime = lastRequestTime
     }
     
     init(requestDataItem: RequestDataItem) {
