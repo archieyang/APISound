@@ -66,6 +66,60 @@ class HistoryPresenterSpec: QuickSpec {
                     expect(historyUi.mGroupItems.count).to(equal(1))
                 }
             }
+            
+            context("6 items in 3 group") {
+                it("set the right items and groups") {
+                    class SixItemsIn3GroupsRequestManager: RequestManager {
+                        
+                        private let mApiRequests: [APIRequest]!
+                        
+                        init(firstGroupCount: Int, secondGroupCount: Int, thirdGroupCount: Int) {
+                            mApiRequests = [APIRequest]()
+                            
+                            let calendar = NSCalendar.currentCalendar()
+                            let today = NSDate()
+                            
+                            for i in 0..<firstGroupCount {
+                                mApiRequests.append(APIRequest(method: "POST", url: "url \(i)", lastRequestTime: today))
+                            }
+                            
+                            
+                            if let oneDayAgo = calendar.dateByAddingUnit(.CalendarUnitDay, value: -1, toDate: NSDate(), options: nil) {
+                                for i in 0..<secondGroupCount {
+                                    mApiRequests.append(APIRequest(method: "POST", url: "url \(i)", lastRequestTime: oneDayAgo))
+                                }
+                            }
+
+                            
+                            if let twoDaysAgo = calendar.dateByAddingUnit(.CalendarUnitDay, value: -2, toDate: NSDate(), options: nil) {
+                                for i in 0..<thirdGroupCount {
+                                    mApiRequests.append(APIRequest(method: "POST", url: "url \(i)", lastRequestTime: twoDaysAgo))
+                                }
+                            }
+                        }
+                        
+                        func fetchAll(callback: ([APIRequest]) -> Void) {
+                            callback(mApiRequests)
+                        }
+                    }
+                    
+                    let firstGroupCount = 100
+                    let secondGroupCount = 2
+                    let thirdGroupCount = 3
+                    
+                    var totalCount: Int {
+                        return firstGroupCount + secondGroupCount + thirdGroupCount
+                    }
+                    
+                    presenter = HistoryPresenter(requestManager: SixItemsIn3GroupsRequestManager(firstGroupCount: firstGroupCount, secondGroupCount: secondGroupCount, thirdGroupCount: thirdGroupCount))
+                    presenter.attachUi(historyUi)
+                    expect(historyUi.mItems.count).to(equal(totalCount))
+                    expect(historyUi.mGroupItems.count).to(equal(3))
+                    expect(historyUi.mGroupItems[0].mSize).to(equal(firstGroupCount))
+                    expect(historyUi.mGroupItems[1].mSize).to(equal(secondGroupCount))
+                    expect(historyUi.mGroupItems[2].mSize).to(equal(thirdGroupCount))
+                }
+            }
         }
         
         class HistoryUiStub: HistoryUi {

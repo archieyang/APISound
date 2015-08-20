@@ -80,8 +80,8 @@ extension NSDate {
 }
 
 public struct HistorySectionItem {
-    let mSize: Int
-    let mDate: String
+    public let mSize: Int
+    public let mDate: String
     
     init(size:Int, date: String) {
         mSize = size
