@@ -8,42 +8,31 @@
 
 import UIKit
 
-class ResponseViewController: UIViewController, UITabBarDelegate {
+class ResponseViewController: UIViewController {
     enum ResponsePart: Int {
         case Body = 0, Headers
     }
     
     var mCurrentPart: ResponsePart!
-    
-    var mResponse: APIResponse? {
-        didSet {
-            refreshText()
-        }
-    }
-    
+    var mCallbacks: ResponseUiCallbacks!
     var mRequest: APIRequest!
-    
     var mResponsePresenter: ResponsePresenter!
     
     @IBOutlet weak var prettySegmentedControl: UISegmentedControl!
-    
     @IBOutlet weak var responseTextView: UITextView!
-    
     @IBOutlet weak var responseStatusLine: UILabel!
     @IBOutlet weak var responseStatusLineView: UIView!
-
     @IBOutlet weak var noResponseHintLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     @IBAction func back(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func formatChanged(sender: UISegmentedControl) {
         mCurrentPart = ResponsePart(rawValue: sender.selectedSegmentIndex)
-        
         refreshText()
     }
-
     
     override func viewDidLoad() {
         mCurrentPart = .Body
@@ -56,63 +45,57 @@ class ResponseViewController: UIViewController, UITabBarDelegate {
         mResponsePresenter.attachUi(self)
     }
     
-    //MARK: UIBottomBarDelegate
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        mCurrentPart = ResponsePart(rawValue: item.tag)
-        refreshText()
-    }
-    
     //MARK: Helpers
     
     private func refreshText() -> Void {
         
         switch mCurrentPart! {
         case .Body:
-            if let responseString = mResponse?.mBody {
-                responseTextView.text = JSONStringify(responseString) ?? responseString
-            } else {
-                noResponseHintLabel.hidden = false
-            }
-            
+            mCallbacks.onShowBody()
         case .Headers:
-            if let header = mResponse?.getFormattedHeader() {
-                responseTextView.text = header
-            } else {
-                noResponseHintLabel.hidden = false
-            }
+            mCallbacks.onShowHeaders()
         }
     }
-    
-    private func JSONStringify(jsonString: String) -> String? {
-
-        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-            if let jsonObject: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) {
-                if let formattedData = NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions.PrettyPrinted, error: nil) {
-                    return NSString(data:formattedData, encoding: NSUTF8StringEncoding) as? String
-                }
-            }
-        }
-        
-        return nil
-    }
-
 }
 
 extension ResponseViewController: ResponseUi {
+
     func setUiCallbacks(callbacks: BaseUiCallbacks) {
-        
+        mCallbacks = callbacks as! ResponseUiCallbacks
     }
     
-    func setResponse(resp: APIResponse?) {
-        mResponse = resp
-        if let status = mResponse?.getStatusLine() {
+    func setStatusLine(statusLine: String?) {
+        if let status = statusLine {
             responseStatusLine.text = status
         } else {
             responseStatusLineView.hidden = true
         }
     }
     
+    func setHeaders(formattedHeaders: String?) {
+        if let header = formattedHeaders {
+            responseTextView.text = header
+        } else {
+            noResponseHintLabel.hidden = false
+        }
+    }
+    
+    func setBody(body: String?) {
+        if let responseString = body {
+            responseTextView.text = body
+        } else {
+            noResponseHintLabel.hidden = false
+        }
+    }
+    
     func setLoadingIndicatorHidden(hidden: Bool) {
         loadingIndicator.hidden = hidden
+    }
+}
+
+extension ResponseViewController: UITabBarDelegate {
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        mCurrentPart = ResponsePart(rawValue: item.tag)
+        refreshText()
     }
 }
