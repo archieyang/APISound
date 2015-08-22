@@ -9,12 +9,14 @@
 import Foundation
 
 public class ResponsePresenter: BasePresenter {
+    let mRequest: APIRequest
+    let mFetcher: Fetcher
+    var mResponse: Response?
     var mResponseUi: ResponseUi?
-    var mRequest: APIRequest
-    var mResponse: APIResponse?
     
-    init(apiRequest: APIRequest) {
+    public init(apiRequest: APIRequest, fetcher: Fetcher = HttpFetcher()) {
         mRequest = apiRequest
+        mFetcher = fetcher
     }
     
     override var mUi: BaseUi! {
@@ -28,10 +30,14 @@ public class ResponsePresenter: BasePresenter {
     override func populateUi() {
         self.mResponseUi?.setLoadingIndicatorHidden(false)
         self.mResponseUi?.setUiCallbacks(self)
-        HttpFetcher().execute(mRequest) { response in
+        mFetcher.execute(mRequest) { response in
             self.mResponseUi?.setLoadingIndicatorHidden(true)
             self.mResponse = response
-            self.mResponseUi?.setStatusLine(response?.getStatusLine())
+            if let statusLine = response?.getStatusLine() {
+                self.mResponseUi?.setStatusLine(statusLine)
+            } else {
+                self.mResponseUi?.setStatusLineHidden(true)
+            }
             self.onShowBody()
         }
     }
@@ -40,10 +46,21 @@ public class ResponsePresenter: BasePresenter {
 
 extension ResponsePresenter: ResponseUiCallbacks {
     public func onShowHeaders() {
-        mResponseUi?.setHeaders(mResponse?.getFormattedHeader())
+        if let header = mResponse?.getFormattedHeader() {
+            mResponseUi?.setMainText(header)
+        } else {
+            mResponseUi?.setNoResponseHintHidden(false)
+        }
+        
+        
     }
     public func onShowBody() {
-        mResponseUi?.setBody(JSONStringify(mResponse?.mBody) ?? mResponse?.mBody)
+        if let body = mResponse?.getBody() {
+            mResponseUi?.setMainText(JSONStringify(body) ?? body)
+        } else {
+            mResponseUi?.setNoResponseHintHidden(false)
+        }
+        
     }
     
     private func JSONStringify(jsonString: String?) -> String? {

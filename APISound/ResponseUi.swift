@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol ResponseUi: BaseUi {
+public protocol ResponseUi: BaseUi {
     func setLoadingIndicatorHidden(hidden: Bool) -> Void
-    func setHeaders(formattedHeaders: String?) -> Void
-    func setBody(body: String?) -> Void
-    func setStatusLine(statusLine: String?) -> Void
+    func setMainText(text: String) -> Void
+    func setStatusLine(statusLine: String) -> Void
+    func setNoResponseHintHidden(hidden: Bool) -> Void
+    func setStatusLineHidden(hidden: Bool) -> Void
 }

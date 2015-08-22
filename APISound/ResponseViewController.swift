@@ -64,28 +64,20 @@ extension ResponseViewController: ResponseUi {
         mCallbacks = callbacks as! ResponseUiCallbacks
     }
     
-    func setStatusLine(statusLine: String?) {
-        if let status = statusLine {
-            responseStatusLine.text = status
-        } else {
-            responseStatusLineView.hidden = true
-        }
+    func setStatusLine(statusLine: String) {
+        responseStatusLine.text = statusLine
     }
     
-    func setHeaders(formattedHeaders: String?) {
-        if let header = formattedHeaders {
-            responseTextView.text = header
-        } else {
-            noResponseHintLabel.hidden = false
-        }
+    func setMainText(text: String) {
+        responseTextView.text = text
     }
     
-    func setBody(body: String?) {
-        if let responseString = body {
-            responseTextView.text = body
-        } else {
-            noResponseHintLabel.hidden = false
-        }
+    func setStatusLineHidden(hidden: Bool) {
+        responseStatusLineView.hidden = hidden
+    }
+    
+    func setNoResponseHintHidden(hidden: Bool) {
+        noResponseHintLabel.hidden = hidden
     }
     
     func setLoadingIndicatorHidden(hidden: Bool) {

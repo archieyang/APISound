@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-struct APIResponse {
+public struct APIResponse: Response {
     let mResponse: NSHTTPURLResponse?
-    let mBody: String?
+    private let mBody: String?
     private let mStatusCode: Int?
     
     init(response: NSHTTPURLResponse?, body: String?) {
@@ -20,7 +20,7 @@ struct APIResponse {
         self.mStatusCode = response?.statusCode
     }
     
-    func getStatusLine() -> String? {
+    public func getStatusLine() -> String? {
         if let status = mStatusCode {
             return "\(status) \(NSHTTPURLResponse.localizedStringForStatusCode(status).capitalizedString)"
         } else {
@@ -28,7 +28,7 @@ struct APIResponse {
         }
     }
     
-    func getFormattedHeader() -> String? {
+    public func getFormattedHeader() -> String? {
         
         if let res = mResponse {
             var resString = ""
@@ -41,4 +41,14 @@ struct APIResponse {
         
         return nil
     }
+    
+    public func getBody() -> String? {
+        return mBody
+    }
+}
+
+public protocol Response {
+    func getBody() -> String?
+    func getStatusLine() -> String?
+    func getFormattedHeader() -> String?
 }

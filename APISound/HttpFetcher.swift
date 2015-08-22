@@ -9,10 +9,10 @@
 import Foundation
 import Alamofire
 
-public class HttpFetcher {
+public class HttpFetcher: Fetcher {
     public static let METHODS = ["GET", "POST"]
     
-    func execute(request: APIRequest, callback: (APIResponse?) -> Void) {
+    public func execute(request: APIRequest, callback: (Response?) -> Void) {
         var params = [String: AnyObject]()
         
         for urlParam in request.mUrlParamList {
@@ -33,4 +33,8 @@ public class HttpFetcher {
         }
     }
     
+}
+
+public protocol Fetcher {
+    func execute(request: APIRequest, callback: (Response?) -> Void)
 }
