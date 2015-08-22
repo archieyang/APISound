@@ -73,13 +73,17 @@ class MainViewController: UIViewController, MainUi {
         urlParamTableViewDelegate = UrlParamTableViewDelegate(controller: self)
         urlParamTableViewDataSource = UrlParamTableViewDataSource(controller: self)
         methodPickerDataSource = MethodPickerDataSource(controller: self)
-        methodPickerDelegate = MethodPickerDelegate(controller: self) { row in
-            self.methodField.text = self.METHODS[row]
-            self.methodPickerView.hidden = true
+        methodPickerDelegate = MethodPickerDelegate(controller: self) { [weak self] row in
+            if let s = self {
+                s.methodField.text = s.METHODS[row]
+                s.methodPickerView.hidden = true
+            }
         }
         
-        methodTextFieldDelegate = MethodTextFieldDelegate {
-            self.methodPickerView.hidden = false
+        methodTextFieldDelegate = MethodTextFieldDelegate { [weak self] in
+            if let s = self {
+                s.methodPickerView.hidden = false
+            }
             return false
         }
         
@@ -158,7 +162,7 @@ class MainViewController: UIViewController, MainUi {
         var isKeyEmpty = true
         var isValueEmpty = true
         
-        paramOperateController.addTextFieldWithConfigurationHandler { (keyTextField) in
+        paramOperateController.addTextFieldWithConfigurationHandler { [unowned self] (keyTextField) in
             
             if let param = defaultUrlParams {
                 keyTextField.text = param.key
@@ -168,13 +172,13 @@ class MainViewController: UIViewController, MainUi {
             
             isKeyEmpty = keyTextField.text.isEmpty
             
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: keyTextField, queue: NSOperationQueue.mainQueue()) { (_) in
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: keyTextField, queue: NSOperationQueue.mainQueue()) { [unowned self] (_) in
                 isKeyEmpty = keyTextField.text.isEmpty
                 okAction.enabled = !isKeyEmpty && !isValueEmpty
             }
         }
         
-        paramOperateController.addTextFieldWithConfigurationHandler { (valueTextField) in
+        paramOperateController.addTextFieldWithConfigurationHandler { [unowned self] (valueTextField) in
             
             if let param = defaultUrlParams {
                 valueTextField.text = param.value
@@ -184,7 +188,7 @@ class MainViewController: UIViewController, MainUi {
             
             isValueEmpty = valueTextField.text.isEmpty
             
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: valueTextField, queue: NSOperationQueue.mainQueue()) { (_) in
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: valueTextField, queue: NSOperationQueue.mainQueue()) { [unowned self] (_) in
                 isValueEmpty = valueTextField.text.isEmpty
                 okAction.enabled = !isKeyEmpty && !isValueEmpty
             }

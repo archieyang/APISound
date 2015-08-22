@@ -27,7 +27,7 @@ public class HttpFetcher: Fetcher {
         }
 
         Alamofire.request(request.mMethod == HttpFetcher.METHODS[0] ? .GET : .POST, request.mUrl, parameters: params, headers: headers).responseString {
-            (_, response, string, _) in
+            [weak self] (_, response, string, _) in
 
             callback(APIResponse(response: response, body: string))
         }

@@ -12,14 +12,14 @@ public class ResponsePresenter: BasePresenter {
     let mRequest: APIRequest
     let mFetcher: Fetcher
     var mResponse: Response?
-    var mResponseUi: ResponseUi?
+    weak var mResponseUi: ResponseUi?
     
     public init(apiRequest: APIRequest, fetcher: Fetcher = HttpFetcher()) {
         mRequest = apiRequest
         mFetcher = fetcher
     }
     
-    override var mUi: BaseUi! {
+    override weak var mUi: BaseUi! {
         didSet {
             if let ui = mUi as? ResponseUi {
                 mResponseUi = ui
@@ -30,15 +30,19 @@ public class ResponsePresenter: BasePresenter {
     override func populateUi() {
         self.mResponseUi?.setLoadingIndicatorHidden(false)
         self.mResponseUi?.setUiCallbacks(self)
-        mFetcher.execute(mRequest) { response in
-            self.mResponseUi?.setLoadingIndicatorHidden(true)
-            self.mResponse = response
-            if let statusLine = response?.getStatusLine() {
-                self.mResponseUi?.setStatusLine(statusLine)
-            } else {
-                self.mResponseUi?.setStatusLineHidden(true)
+        mFetcher.execute(mRequest) { [weak self] response in
+            
+            if let s = self {
+                s.mResponseUi?.setLoadingIndicatorHidden(true)
+                s.mResponse = response
+                if let statusLine = response?.getStatusLine() {
+                    s.mResponseUi?.setStatusLine(statusLine)
+                } else {
+                    s.mResponseUi?.setStatusLineHidden(true)
+                }
+                s.onShowBody()
             }
-            self.onShowBody()
+
         }
     }
     

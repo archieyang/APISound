@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol BaseUi {
+public protocol BaseUi: class {
     func setUiCallbacks(callbacks: BaseUiCallbacks) -> Void;
 }

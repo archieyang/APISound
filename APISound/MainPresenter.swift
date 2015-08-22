@@ -12,7 +12,7 @@ public class MainPresenter: BasePresenter {
 
     var mApiRequest: APIRequest?
     
-    var mMainUi: MainUi?
+    weak var mMainUi: MainUi?
     
     override var mUi: BaseUi! {
         didSet {

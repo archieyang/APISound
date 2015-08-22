@@ -11,7 +11,7 @@ import Foundation
 public class BasePresenter {
     public typealias U = BaseUi
     
-    var mUi : U!
+    weak var mUi : U!
     
     public init() {
         

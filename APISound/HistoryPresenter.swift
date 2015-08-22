@@ -16,9 +16,9 @@ public class HistoryPresenter: BasePresenter {
     }
 
     override func populateUi() -> Void {
-        mRequestManager.fetchAll { apiRequests in
-            if let ui = self.mUi as? HistoryUi {
-                ui.setGroups(self.groupRequests(apiRequests))
+        mRequestManager.fetchAll { [weak self] apiRequests in
+            if let ui = self?.mUi as? HistoryUi, presenter = self {
+                ui.setGroups(presenter.groupRequests(apiRequests))
                 ui.setItems(apiRequests)
             }
         }
